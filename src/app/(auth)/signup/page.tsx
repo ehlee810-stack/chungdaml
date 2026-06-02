@@ -18,6 +18,17 @@ export default function SignupPage() {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
 
+  async function handleKakao() {
+    const supabase = createClient();
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "kakao",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?next=/mypage`,
+      },
+    });
+    if (error) toast.error(error.message);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
@@ -45,9 +56,27 @@ export default function SignupPage() {
       <Card>
         <CardHeader>
           <CardTitle>회원가입</CardTitle>
-          <CardDescription>이메일 인증 없이 즉시 가입됩니다.</CardDescription>
+          <CardDescription>카카오톡으로 간편하게 가입하세요.</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-5">
+          {/* 카카오 회원가입 — 메인 */}
+          <button
+            type="button"
+            onClick={handleKakao}
+            className="flex w-full items-center justify-center gap-2 rounded-md bg-[#FEE500] px-4 py-3 text-[15px] font-semibold text-[#191600] transition-opacity hover:opacity-90"
+          >
+            <svg width="20" height="20" viewBox="0 0 36 36" fill="currentColor" aria-hidden>
+              <path d="M18 5C10.82 5 5 9.58 5 15.23c0 3.64 2.43 6.83 6.08 8.64-.27.97-.97 3.5-1.11 4.04-.17.68.25.67.52.49.21-.14 3.36-2.28 4.72-3.21.58.08 1.18.13 1.79.13 7.18 0 13-4.58 13-10.23S25.18 5 18 5z" />
+            </svg>
+            카카오톡으로 회원가입
+          </button>
+
+          <div className="flex items-center gap-3 text-xs text-mute">
+            <span className="h-px flex-1 bg-hairline" />
+            또는 이메일로 가입
+            <span className="h-px flex-1 bg-hairline" />
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">이름</Label>
