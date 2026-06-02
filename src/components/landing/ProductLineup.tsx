@@ -41,10 +41,16 @@ export async function ProductLineup() {
   }
 
   return (
-    <section className="container py-16 border-t border-hairline">
-      <h2 className="mb-10 text-center font-serif text-2xl md:text-3xl font-semibold tracking-tight text-ink">
-        사주 라인업
-      </h2>
+    <section className="container py-20 border-t border-hairline md:py-24">
+      <div className="mx-auto mb-12 max-w-2xl text-center">
+        <p className="mb-3 font-mono text-xs tracking-[0.3em] text-yeonji">SAJU MENU</p>
+        <h2 className="font-serif text-2xl font-bold tracking-tight text-ink md:text-[34px]">
+          사주 라인업
+        </h2>
+        <p className="mx-auto mt-5 max-w-lg text-[15px] leading-relaxed text-body">
+          가볍게 보는 이번주 운세부터 깊이 있는 종합 사주까지, 원하는 만큼 들여다보세요.
+        </p>
+      </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {products.map((p) => (
           <Link
