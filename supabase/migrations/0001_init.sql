@@ -40,6 +40,7 @@ create table public.products (
   name text not null,
   description text not null,
   price integer not null check (price >= 0),
+  compare_at_price integer check (compare_at_price >= 0),
   display_order integer not null default 0,
   is_active boolean not null default true,
   created_at timestamptz not null default now()

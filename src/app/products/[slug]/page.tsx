@@ -2,11 +2,19 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentUser } from "@/lib/auth";
 import { SajuForm } from "@/components/saju/SajuForm";
-import { formatKRW, formatDate } from "@/lib/utils";
+import { PriceTag } from "@/components/PriceTag";
+import { formatDate } from "@/lib/utils";
 import { isSupabaseConfigured } from "@/lib/env";
 import { productsSeed } from "@/config/products.seed";
 
-type Product = { id: string; slug: string; name: string; description: string; price: number };
+type Product = {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  price: number;
+  compare_at_price?: number | null;
+};
 type Review = { id: string; rating: number; content: string; created_at: string };
 
 export default async function ProductDetailPage({
@@ -24,7 +32,7 @@ export default async function ProductDetailPage({
     const supabase = await createClient();
     const { data } = await supabase
       .from("products")
-      .select("id, slug, name, description, price")
+      .select("id, slug, name, description, price, compare_at_price")
       .eq("slug", slug)
       .eq("is_active", true)
       .maybeSingle();
@@ -54,7 +62,12 @@ export default async function ProductDetailPage({
         <p className="text-xs font-mono text-mute mb-2">PRODUCT / {product.slug}</p>
         <h1 className="text-3xl font-semibold tracking-tight">{product.name}</h1>
         <p className="mt-2 text-sm text-body">{product.description}</p>
-        <p className="mt-5 text-2xl font-mono font-medium text-ink">{formatKRW(product.price)}</p>
+        <PriceTag
+          price={product.price}
+          compareAt={product.compare_at_price}
+          size="lg"
+          className="mt-5"
+        />
       </header>
 
       <section>

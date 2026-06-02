@@ -1,18 +1,20 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { formatKRW } from "@/lib/utils";
+import { PriceTag } from "@/components/PriceTag";
 import { isSupabaseConfigured } from "@/lib/env";
 import { productsSeed } from "@/config/products.seed";
 
 export const metadata = { title: "상품" };
 
 export default async function ProductsPage() {
-  let products: { slug: string; name: string; description: string; price: number }[] | null;
+  let products:
+    | { slug: string; name: string; description: string; price: number; compare_at_price?: number | null }[]
+    | null;
   if (isSupabaseConfigured()) {
     const supabase = await createClient();
     const { data } = await supabase
       .from("products")
-      .select("slug, name, description, price")
+      .select("slug, name, description, price, compare_at_price")
       .eq("is_active", true)
       .order("display_order", { ascending: true });
     products = data;
@@ -20,7 +22,13 @@ export default async function ProductsPage() {
     products = productsSeed
       .filter((p) => p.is_active)
       .sort((a, b) => a.display_order - b.display_order)
-      .map(({ slug, name, description, price }) => ({ slug, name, description, price }));
+      .map(({ slug, name, description, price, compare_at_price }) => ({
+        slug,
+        name,
+        description,
+        price,
+        compare_at_price,
+      }));
   }
 
   return (
@@ -45,7 +53,7 @@ export default async function ProductsPage() {
               <p className="mt-1.5 text-sm text-body leading-relaxed line-clamp-2">
                 {p.description}
               </p>
-              <p className="mt-5 text-lg font-mono font-medium text-ink">{formatKRW(p.price)}</p>
+              <PriceTag price={p.price} compareAt={p.compare_at_price} className="mt-5" />
             </Link>
           ))}
         </div>
