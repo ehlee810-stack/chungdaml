@@ -28,6 +28,7 @@ type ProductRow = {
   name: string;
   description: string;
   price: number;
+  compare_at_price: number | null;
   display_order: number;
   is_active: boolean;
   created_at: string;
@@ -111,6 +112,7 @@ export type Database = {
           name: string;
           description: string;
           price: number;
+          compare_at_price?: number | null;
           display_order?: number;
           is_active?: boolean;
           created_at?: string;
