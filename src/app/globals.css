@@ -7,23 +7,23 @@
 
 @layer base {
   :root {
-    --background: 39 46% 93%;         /* 한지 크림 #f7f1e6 */
-    --foreground: 26 30% 14%;         /* 원목 먹 #2e2018 */
-    --card: 39 46% 93%;
-    --card-foreground: 26 30% 14%;
-    --primary: 344 64% 43%;           /* 연지빛 자홍 #b3284e */
-    --primary-foreground: 39 71% 96%;
-    --secondary: 40 41% 88%;          /* 한지 보조 #efe6d4 */
-    --secondary-foreground: 26 30% 14%;
-    --muted: 40 41% 88%;
-    --muted-foreground: 28 19% 40%;   /* 따뜻한 토프 #7a6552 */
-    --accent: 40 41% 88%;
-    --accent-foreground: 26 30% 14%;
-    --destructive: 0 70% 45%;
-    --destructive-foreground: 39 71% 96%;
-    --border: 38 38% 82%;             /* 한지 헤어라인 #e2d6c0 */
-    --input: 38 38% 82%;
-    --ring: 344 64% 43%;              /* 연지빛 포커스 링 */
+    --background: 240 53% 8%;         /* 네이비 블랙 #0a0a1f */
+    --foreground: 46 43% 85%;         /* 크림 골드 #ece4c8 */
+    --card: 240 53% 8%;
+    --card-foreground: 46 43% 85%;
+    --primary: 43 53% 54%;            /* 골드 #c9a84c */
+    --primary-foreground: 240 53% 8%;
+    --secondary: 240 40% 12%;         /* 떠오른 네이비 #10112c */
+    --secondary-foreground: 46 43% 85%;
+    --muted: 240 40% 12%;
+    --muted-foreground: 41 18% 59%;   /* 골드그레이 #a99f86 */
+    --accent: 240 40% 12%;
+    --accent-foreground: 46 43% 85%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 46 43% 85%;
+    --border: 240 31% 22%;            /* 네이비 경계선 #26264a */
+    --input: 240 31% 22%;
+    --ring: 43 53% 54%;               /* 골드 포커스 링 */
     --radius: 0.75rem;
   }
 }

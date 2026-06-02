@@ -39,8 +39,8 @@ export function Intro() {
               className="rounded-lg border border-hairline bg-canvas p-8 text-center"
             >
               <div
-                className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full font-serif text-2xl font-semibold text-[#fdf6ea]"
-                style={{ backgroundColor: "#6b4a2f" }}
+                className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full font-serif text-2xl font-semibold text-[#0a0a1f]"
+                style={{ background: "linear-gradient(135deg,#f6e6a8,#e8c96a 50%,#b88a22)" }}
               >
                 {f.glyph}
               </div>
