@@ -18,7 +18,7 @@ export const businessInfo = {
   representative: "이은희",
   businessNumber: "198-61-00763",
   mailOrderNumber: "2025-제주대정-063",
-  address: "제주특별자치도 서귀포시 대정읍 에듀시티로 148, 102-202",
+  address: "제주특별자치도 서귀포시 대정읍 에듀시티로 148",
   phone: "010-0000-0000", // TODO: 실제 고객문의 번호로 교체
   phoneNote: "문자만 가능 · 평일 11-15시", // 비우면 푸터에서 부가표시 없이 노출
   email: "contact@example.com", // TODO: 실제 고객문의 이메일로 교체
