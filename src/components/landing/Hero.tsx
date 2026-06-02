@@ -3,97 +3,88 @@ import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-// 신비로운 밤하늘 + 골드 Hero — 별·달·골드 그라데이션 텍스트.
-// 별 위치는 하이드레이션 안정성을 위해 고정 좌표 사용.
-const stars = [
-  [6, 18, 1.4], [14, 42, 1], [9, 70, 1.2], [18, 12, 1], [22, 60, 1.6],
-  [27, 30, 1], [31, 80, 1.2], [12, 88, 1], [38, 16, 1.3], [44, 52, 1],
-  [49, 24, 1.6], [55, 74, 1.1], [60, 14, 1], [64, 44, 1.4], [69, 66, 1],
-  [73, 22, 1.2], [78, 82, 1], [82, 36, 1.5], [86, 58, 1], [90, 16, 1.3],
-  [93, 72, 1.1], [40, 88, 1], [3, 50, 1], [96, 44, 1.2], [52, 6, 1.1],
-];
+// 한옥 컨셉 Hero — 한지 배경 + 큰 보름달, 창살 격자, 낙관(도장), 조각보.
+const jogakboColors = ["#b3284e", "#d98a3d", "#e0c35a", "#5f7a52", "#3f5c8a", "#8a4a86"];
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-hairline">
-      {/* 밤하늘 그라데이션 */}
+      {/* 따뜻한 햇살 + 한지 그라데이션 */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-20"
         style={{
           background:
-            "radial-gradient(120% 80% at 50% -10%, rgba(201,168,76,0.10) 0%, transparent 55%)," +
-            "radial-gradient(70% 60% at 80% 8%, rgba(122,0,40,0.22) 0%, transparent 60%)," +
-            "linear-gradient(180deg, #0c0c24 0%, #07071a 100%)",
+            "radial-gradient(110% 70% at 50% -5%, rgba(179,40,78,0.10) 0%, transparent 55%)," +
+            "radial-gradient(60% 50% at 84% 12%, rgba(214,138,61,0.18) 0%, transparent 60%)," +
+            "linear-gradient(180deg, #f9f3e8 0%, #efe4d0 100%)",
         }}
       />
 
-      {/* 별 */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        {stars.map(([left, top, r], i) => (
-          <span
-            key={i}
-            className="absolute rounded-full bg-[#f4ecd0]"
-            style={{
-              left: `${left}%`,
-              top: `${top}%`,
-              width: `${r}px`,
-              height: `${r}px`,
-              opacity: 0.7,
-              boxShadow: "0 0 6px rgba(244,236,208,0.7)",
-            }}
-          />
-        ))}
-      </div>
-
-      {/* 보름달 */}
+      {/* 큰 보름달 */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-12 -top-8 -z-10 h-64 w-64 rounded-full md:h-80 md:w-80"
+        className="pointer-events-none absolute -right-16 -top-10 -z-10 h-72 w-72 rounded-full md:h-96 md:w-96"
         style={{
           background:
-            "radial-gradient(circle at 38% 35%, #fff7df 0%, #ecc56a 55%, #b88a22 100%)",
-          opacity: 0.85,
-          boxShadow: "0 0 90px 30px rgba(201,168,76,0.25)",
+            "radial-gradient(circle at 38% 35%, #fbf3d8 0%, #ecc56a 55%, #cf9a2e 100%)",
+          opacity: 0.5,
+          filter: "blur(2px)",
         }}
       />
 
+      {/* 창살(窓살) 격자 — 좌측 하단 은은하게 */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute -left-12 bottom-0 -z-10 h-80 w-80 text-hanok-wood opacity-[0.10]"
+        viewBox="0 0 200 200"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        {[0, 33, 66, 100, 133, 166, 200].map((v) => (
+          <line key={`h${v}`} x1="0" y1={v} x2="200" y2={v} />
+        ))}
+        {[0, 33, 66, 100, 133, 166, 200].map((v) => (
+          <line key={`v${v}`} x1={v} y1="0" x2={v} y2="200" />
+        ))}
+      </svg>
+
       <div className="container relative py-28 text-center md:py-40">
-        {/* 골드 엠블럼 + 이브로우 */}
+        {/* 낙관(落款) — 붉은 도장 + 브랜드 한자 */}
         <div className="mx-auto mb-7 flex w-fit items-center gap-2.5">
-          <span className="text-lg text-gold">✦</span>
-          <span className="font-mono text-[12px] tracking-[0.35em] text-gold">
+          <span className="flex h-9 w-9 items-center justify-center rounded-[5px] bg-yeonji text-[15px] font-semibold text-[#fdf6ea] shadow-sm">
+            印
+          </span>
+          <span className="font-mono text-[12px] tracking-[0.35em] text-hanok-wood">
             정통 사주명리
           </span>
-          <span className="text-lg text-gold">✦</span>
         </div>
 
-        <h1 className="mx-auto max-w-3xl font-serif text-[40px] font-bold leading-[1.12] tracking-tight md:text-[64px]">
-          <span
-            style={{
-              background: "linear-gradient(135deg,#f6e6a8 0%,#e8c96a 45%,#b88a22 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            {siteConfig.tagline}
-          </span>
+        <h1 className="mx-auto max-w-3xl font-serif text-[40px] font-bold leading-[1.12] tracking-tight text-ink md:text-[64px]">
+          {siteConfig.tagline}
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl text-[16px] leading-relaxed text-charcoal md:text-[17px]">
           {siteConfig.description}
         </p>
 
-        {/* 골드 디바이더 */}
-        <div className="mx-auto mt-9 flex w-fit items-center gap-3 text-gold">
-          <span className="h-px w-12 bg-gradient-to-r from-transparent to-gold" />
-          <span>☾</span>
-          <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold" />
+        {/* 조각보 — 굵은 포인트 띠 */}
+        <div className="mx-auto mt-9 flex w-fit gap-2">
+          {jogakboColors.map((c) => (
+            <span
+              key={c}
+              className="h-8 w-8 rounded-[5px] shadow-sm md:h-10 md:w-10"
+              style={{ backgroundColor: c }}
+            />
+          ))}
         </div>
 
-        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link href="/products" className={cn(buttonVariants({ size: "lg" }), "px-8")}>
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Link
+            href="/products"
+            className={cn(buttonVariants({ size: "lg" }), "px-8")}
+          >
             내 사주 보러 가기
           </Link>
           <Link

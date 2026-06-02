@@ -40,22 +40,20 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // 신비로운 밤하늘 + 골드 팔레트
-        ink: "#ece4c8",          // 크림 골드 — 본문·제목 (밝게)
-        canvas: "#0a0a1f",       // 깊은 네이비 블랙 — 기본 배경
-        "surface-soft": "#10112c", // 살짝 떠오른 네이비 — 보조 면
-        "surface-dark": "#05050e", // 가장 깊은 밤 — 패널
-        charcoal: "#cfc6a8",     // 밝은 크림
-        body: "#a99f86",         // 흐린 골드그레이 — 본문 보조
-        mute: "#6f6a55",         // 어두운 골드그레이
-        hairline: "#26264a",     // 은은한 네이비 경계선
-        "hairline-strong": "#3a3a5e",
+        // 한옥(韓屋) 따뜻한 한지·원목 팔레트
+        ink: "#2e2018",          // 짙은 원목/먹 — 본문·제목
+        canvas: "#f7f1e6",       // 한지 크림 — 기본 배경
+        "surface-soft": "#efe6d4", // 살짝 짙은 한지 — 보조 면
+        "surface-dark": "#3a261a", // 짙은 원목 — CTA 띠
+        charcoal: "#5c4636",     // 따뜻한 갈색
+        body: "#7a6552",         // 따뜻한 토프 — 본문 보조
+        mute: "#a8967f",         // 흐린 갈회색
+        hairline: "#e2d6c0",     // 한지 헤어라인
+        "hairline-strong": "#d2c2a4",
         // 포인트 컬러
-        yeonji: "#c9a84c",       // 골드 (포인트)
-        "hanok-wood": "#c9a84c", // 골드 (기존 클래스 호환)
-        "hanok-green": "#5f7a52",
-        gold: "#c9a84c",
-        "gold-light": "#e8c96a",
+        yeonji: "#b3284e",       // 연지빛 자홍 (방석 색)
+        "hanok-wood": "#6b4a2f", // 기둥 원목색
+        "hanok-green": "#5f7a52", // 창밖 정원 녹음
       },
       borderRadius: {
         lg: "var(--radius)",
