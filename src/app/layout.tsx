@@ -62,7 +62,10 @@ function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
               </form>
             </>
           ) : (
-            <Link href="/login" className="text-ink hover:text-body">로그인</Link>
+            <>
+              <Link href="/login" className="text-ink hover:text-body">로그인</Link>
+              <Link href="/signup" className="text-ink hover:text-body">회원가입</Link>
+            </>
           )}
         </nav>
       </div>
