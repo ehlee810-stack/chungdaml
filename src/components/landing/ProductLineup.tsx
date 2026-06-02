@@ -42,8 +42,8 @@ export async function ProductLineup() {
 
   return (
     <section className="container py-16 border-t border-hairline">
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center mb-10">
-        상품 라인업
+      <h2 className="mb-10 text-center font-serif text-2xl md:text-3xl font-semibold tracking-tight text-ink">
+        사주 라인업
       </h2>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {products.map((p) => (

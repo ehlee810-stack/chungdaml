@@ -40,16 +40,20 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Ollama palette aliases (see DESIGN.md)
-        ink: "#000000",
-        canvas: "#ffffff",
-        "surface-soft": "#fafafa",
-        "surface-dark": "#171717",
-        charcoal: "#525252",
-        body: "#737373",
-        mute: "#a3a3a3",
-        hairline: "#e5e5e5",
-        "hairline-strong": "#d4d4d4",
+        // 한옥(韓屋) 따뜻한 한지·원목 팔레트
+        ink: "#2e2018",          // 짙은 원목/먹 — 본문·제목
+        canvas: "#f7f1e6",       // 한지 크림 — 기본 배경
+        "surface-soft": "#efe6d4", // 살짝 짙은 한지 — 보조 면
+        "surface-dark": "#3a261a", // 짙은 원목 — CTA 띠
+        charcoal: "#5c4636",     // 따뜻한 갈색
+        body: "#7a6552",         // 따뜻한 토프 — 본문 보조
+        mute: "#a8967f",         // 흐린 갈회색
+        hairline: "#e2d6c0",     // 한지 헤어라인
+        "hairline-strong": "#d2c2a4",
+        // 포인트 컬러
+        yeonji: "#b3284e",       // 연지빛 자홍 (방석 색)
+        "hanok-wood": "#6b4a2f", // 기둥 원목색
+        "hanok-green": "#5f7a52", // 창밖 정원 녹음
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -58,14 +62,18 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
-          "SF Pro Rounded",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "ui-sans-serif",
-          "system-ui",
+          "var(--font-serif)",
           "Apple SD Gothic Neo",
-          "Noto Sans KR",
-          "sans-serif",
+          "Noto Serif KR",
+          "ui-serif",
+          "Georgia",
+          "serif",
+        ],
+        serif: [
+          "var(--font-serif)",
+          "Noto Serif KR",
+          "ui-serif",
+          "serif",
         ],
         mono: [
           "ui-monospace",

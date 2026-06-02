@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Noto_Serif_KR } from "next/font/google";
 import { Toaster } from "sonner";
 import { siteConfig, businessInfo } from "@/config/site";
 import { isSupabaseConfigured } from "@/lib/env";
 import { getCurrentUser } from "@/lib/auth";
 import "./globals.css";
+
+// 한옥 컨셉 — 정갈한 명조체
+const notoSerifKr = Noto_Serif_KR({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  preload: false,
+  variable: "--font-serif",
+});
 
 export const metadata: Metadata = {
   title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
@@ -23,7 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const isLoggedIn = isSupabaseConfigured() ? !!(await getCurrentUser()) : false;
 
   return (
-    <html lang="ko">
+    <html lang="ko" className={notoSerifKr.variable}>
       <body suppressHydrationWarning>
         <SiteHeader isLoggedIn={isLoggedIn} />
         <main className="min-h-[calc(100vh-7rem)]">{children}</main>

@@ -2,30 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ollama-inspired design system — see DESIGN.md
-   Paper-white canvas, pure black primary, no shadows, hairline borders,
-   full-rounded pill geometry on interactive elements. */
+/* 한옥(韓屋) 디자인 시스템 — 따뜻한 한지 크림, 원목 톤, 연지빛 포인트.
+   기존 토큰 이름(canvas/ink/body…)을 유지하고 값만 따뜻하게 교체. */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;          /* canvas #ffffff */
-    --foreground: 0 0% 0%;            /* ink #000000 */
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
-    --primary: 0 0% 0%;               /* pure black */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 98%;            /* surface-soft #fafafa */
-    --secondary-foreground: 0 0% 0%;
-    --muted: 0 0% 98%;
-    --muted-foreground: 0 0% 45%;     /* body #737373 */
-    --accent: 0 0% 98%;
-    --accent-foreground: 0 0% 0%;
-    --destructive: 0 75% 50%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 90%;               /* hairline #e5e5e5 */
-    --input: 0 0% 90%;
-    --ring: 217 91% 60%;              /* focus-ring blue */
-    --radius: 0.75rem;                /* lg used for cards */
+    --background: 39 46% 93%;         /* 한지 크림 #f7f1e6 */
+    --foreground: 26 30% 14%;         /* 원목 먹 #2e2018 */
+    --card: 39 46% 93%;
+    --card-foreground: 26 30% 14%;
+    --primary: 344 64% 43%;           /* 연지빛 자홍 #b3284e */
+    --primary-foreground: 39 71% 96%;
+    --secondary: 40 41% 88%;          /* 한지 보조 #efe6d4 */
+    --secondary-foreground: 26 30% 14%;
+    --muted: 40 41% 88%;
+    --muted-foreground: 28 19% 40%;   /* 따뜻한 토프 #7a6552 */
+    --accent: 40 41% 88%;
+    --accent-foreground: 26 30% 14%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 39 71% 96%;
+    --border: 38 38% 82%;             /* 한지 헤어라인 #e2d6c0 */
+    --input: 38 38% 82%;
+    --ring: 344 64% 43%;              /* 연지빛 포커스 링 */
+    --radius: 0.75rem;
   }
 }
 
@@ -40,8 +39,8 @@
   body {
     @apply bg-background text-foreground;
     font-family:
-      "SF Pro Rounded", -apple-system, BlinkMacSystemFont, ui-sans-serif,
-      system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      var(--font-serif), "Apple SD Gothic Neo", "Noto Serif KR", ui-serif,
+      Georgia, serif;
   }
   code, pre, kbd, samp {
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco,
