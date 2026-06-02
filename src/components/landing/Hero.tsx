@@ -40,11 +40,11 @@ export function Hero() {
 
       <div className="container relative py-24 md:py-32 text-center">
         {/* 조각보(조각보) 포인트 — 알록달록 색 조각 */}
-        <div className="mx-auto mb-8 flex w-fit gap-1.5">
+        <div className="mx-auto mb-8 flex w-fit gap-2">
           {jogakboColors.map((c) => (
             <span
               key={c}
-              className="h-3 w-3 rounded-[2px]"
+              className="h-7 w-7 rounded-[4px] md:h-9 md:w-9"
               style={{ backgroundColor: c }}
             />
           ))}
