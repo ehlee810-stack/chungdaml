@@ -62,7 +62,7 @@ function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
           </span>
           {siteConfig.name}
         </Link>
-        <nav className="flex items-center gap-6 text-[13px] font-medium">
+        <nav className="flex items-center gap-4 text-[13px] font-medium sm:gap-6">
           <Link href="/products" className="text-ink hover:text-body">상품</Link>
           {isLoggedIn ? (
             <>

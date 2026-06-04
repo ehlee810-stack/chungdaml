@@ -17,56 +17,46 @@ function ring(items: string[], radius: number, cx = 300, cy = 300) {
   });
 }
 
-// 여러 별자리 — 각자 좌표(0~100)와 연결선
+// 여러 별자리 — 좌표(0~100), 연결선, 위치/크기 클래스(모바일 작게)
 type Cons = {
-  wrap: string; // 위치 + 투명도 클래스
-  size: number;
+  wrap: string; // 위치 + 투명도 + 반응형 크기 클래스
   stars: [number, number][];
   lines: [number, number][];
 };
 const constellations: Cons[] = [
   {
-    // 북두칠성 (Big Dipper) — 손잡이가 휘어진 국자
-    wrap: "left-[2%] top-[7%] opacity-[0.26]",
-    size: 230,
-    // 0알카이드 1미자르 2알리오트 3메그레즈 4페크다 5메라크 6두브헤
+    // 북두칠성
+    wrap: "left-[1%] top-[6%] h-28 w-28 opacity-[0.22] md:h-[230px] md:w-[230px] md:opacity-[0.26]",
     stars: [[8, 20], [24, 30], [40, 37], [56, 44], [60, 66], [84, 62], [80, 40]],
     lines: [[0, 1], [1, 2], [2, 3], [3, 6], [6, 5], [5, 4], [4, 3]],
   },
   {
-    // 카시오페이아 (Cassiopeia) — W 형
-    wrap: "right-[3%] top-[9%] opacity-[0.24]",
-    size: 215,
+    // 카시오페이아 (W)
+    wrap: "right-[1%] top-[7%] h-24 w-24 opacity-[0.20] md:h-[215px] md:w-[215px] md:opacity-[0.24]",
     stars: [[6, 42], [26, 16], [48, 40], [70, 12], [92, 34]],
     lines: [[0, 1], [1, 2], [2, 3], [3, 4]],
   },
   {
-    // 백조자리 (Cygnus) — 북십자
-    wrap: "left-[3%] bottom-[8%] opacity-[0.24]",
-    size: 205,
-    // 0데네브(위) 1사드르(중심) 2알비레오(아래) 3좌날개 4우날개
+    // 백조자리 (북십자)
+    wrap: "left-[2%] bottom-[7%] h-24 w-24 opacity-[0.20] md:h-[205px] md:w-[205px] md:opacity-[0.24]",
     stars: [[50, 8], [50, 46], [50, 90], [14, 52], [86, 40]],
     lines: [[0, 1], [1, 2], [3, 1], [1, 4]],
   },
   {
-    // 오리온자리 (Orion) — 어깨·삼태성·다리
-    wrap: "right-[4%] bottom-[7%] opacity-[0.26]",
-    size: 215,
-    // 0베텔게우스 1벨라트릭스 2알니탁 3알닐람 4민타카 5사이프 6리겔
+    // 오리온자리
+    wrap: "right-[2%] bottom-[6%] h-28 w-28 opacity-[0.22] md:h-[215px] md:w-[215px] md:opacity-[0.26]",
     stars: [[30, 16], [64, 12], [40, 50], [50, 53], [60, 56], [34, 88], [72, 84]],
     lines: [[0, 2], [2, 3], [3, 4], [4, 1], [2, 5], [4, 6]],
   },
   {
-    // 전갈자리 (Scorpius) — 휘어진 꼬리
-    wrap: "right-[1%] top-[45%] opacity-[0.20] hidden md:block",
-    size: 220,
+    // 전갈자리 — 데스크탑 전용
+    wrap: "right-[1%] top-[45%] hidden md:block md:h-[220px] md:w-[220px] md:opacity-[0.20]",
     stars: [[16, 12], [26, 24], [34, 38], [44, 52], [56, 62], [68, 68], [78, 58], [72, 46]],
     lines: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]],
   },
   {
-    // 삼각형자리 (Triangulum) — 가늘고 긴 삼각형
-    wrap: "left-[1%] top-[47%] opacity-[0.18] hidden md:block",
-    size: 160,
+    // 삼각형자리 — 데스크탑 전용
+    wrap: "left-[1%] top-[47%] hidden md:block md:h-[160px] md:w-[160px] md:opacity-[0.18]",
     stars: [[16, 30], [82, 20], [52, 64]],
     lines: [[0, 1], [1, 2], [2, 0]],
   },
@@ -86,7 +76,6 @@ function Constellation({ c }: { c: Cons }) {
       viewBox="0 0 100 100"
       aria-hidden
       className={`pointer-events-none absolute -z-10 text-hanok-wood ${c.wrap}`}
-      style={{ width: c.size, height: c.size }}
       fill="none"
       stroke="currentColor"
     >
@@ -129,7 +118,7 @@ export function Hero() {
           <span
             key={i}
             className="absolute rounded-full bg-hanok-wood"
-            style={{ left: `${left}%`, top: `${top}%`, width: `${r * 2}px`, height: `${r * 2}px`, opacity: 0.22 }}
+            style={{ left: `${left}%`, top: `${top}%`, width: `${r * 2}px`, height: `${r * 2}px`, opacity: 0.2 }}
           />
         ))}
       </div>
@@ -139,11 +128,11 @@ export function Hero() {
         <Constellation key={i} c={c} />
       ))}
 
-      {/* 간지(干支) 원형 도표 — 중앙 은은한 워터마크 */}
+      {/* 간지(干支) 원형 도표 — 중앙 은은한 워터마크 (모바일 작게) */}
       <svg
         aria-hidden
         viewBox="0 0 600 600"
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 text-hanok-wood opacity-[0.10] md:h-[680px] md:w-[680px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 text-hanok-wood opacity-[0.09] sm:h-[480px] sm:w-[480px] md:h-[680px] md:w-[680px] md:opacity-[0.10]"
       >
         {[280, 232, 156, 108].map((r) => (
           <circle key={r} cx="300" cy="300" r={r} fill="none" stroke="currentColor" strokeWidth="1.2" />
@@ -180,37 +169,37 @@ export function Hero() {
         />
       </svg>
 
-      <div className="container relative py-28 text-center md:py-40">
+      <div className="container relative py-20 text-center md:py-40">
         {/* 낙관(落款) — 붉은 도장 + 브랜드 한자 */}
-        <div className="mx-auto mb-7 flex w-fit items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-[6px] bg-yeonji text-[17px] font-semibold text-[#fdf6ea] shadow-sm">
+        <div className="mx-auto mb-6 flex w-fit items-center gap-2.5 md:mb-7 md:gap-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-[6px] bg-yeonji text-[15px] font-semibold text-[#fdf6ea] shadow-sm md:h-10 md:w-10 md:text-[17px]">
             印
           </span>
-          <span className="font-serif text-[20px] font-semibold tracking-[0.18em] text-hanok-wood md:text-[22px]">
+          <span className="font-serif text-[17px] font-semibold tracking-[0.16em] text-hanok-wood md:text-[22px] md:tracking-[0.18em]">
             정통 사주명리
           </span>
         </div>
 
-        <h1 className="mx-auto max-w-3xl font-serif text-[40px] font-bold leading-[1.12] tracking-tight text-ink md:text-[64px]">
+        <h1 className="mx-auto max-w-3xl font-serif text-[32px] font-bold leading-[1.18] tracking-tight text-ink sm:text-[40px] md:text-[64px] md:leading-[1.12]">
           {siteConfig.tagline}
         </h1>
 
-        <p className="mx-auto mt-6 max-w-xl text-[16px] leading-relaxed text-charcoal md:text-[17px]">
+        <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-charcoal md:mt-6 md:text-[17px]">
           {siteConfig.description}
         </p>
 
         {/* 조각보 — 굵은 포인트 띠 */}
-        <div className="mx-auto mt-9 flex w-fit gap-2">
+        <div className="mx-auto mt-8 flex w-fit gap-1.5 md:mt-9 md:gap-2">
           {jogakboColors.map((c) => (
             <span
               key={c}
-              className="h-8 w-8 rounded-[5px] shadow-sm md:h-10 md:w-10"
+              className="h-7 w-7 rounded-[5px] shadow-sm md:h-10 md:w-10"
               style={{ backgroundColor: c }}
             />
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mx-auto mt-9 flex w-full max-w-xs flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center md:mt-10">
           <Link href="/products" className={cn(buttonVariants({ size: "lg" }), "px-8")}>
             내 사주 보러 가기
           </Link>
@@ -222,7 +211,7 @@ export function Hero() {
           </Link>
         </div>
 
-        <p className="mt-6 text-[13px] text-mute">
+        <p className="mx-auto mt-6 max-w-sm text-[12px] leading-relaxed text-mute md:max-w-none md:text-[13px]">
           회원 전용 · 카카오 간편 로그인 · 정통 만세력 기반 1900~2100년 분석
         </p>
       </div>

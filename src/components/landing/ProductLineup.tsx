@@ -56,7 +56,7 @@ export async function ProductLineup() {
           <Link
             key={p.slug}
             href={`/products/${p.slug}`}
-            className="group flex flex-col rounded-lg border border-hairline bg-canvas p-8 transition-all duration-200 hover:-translate-y-1 hover:border-yeonji/50 hover:shadow-[0_16px_36px_-14px_rgba(122,40,55,0.28)]"
+            className="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 transition-all duration-200 hover:-translate-y-1 hover:border-yeonji/50 hover:shadow-[0_16px_36px_-14px_rgba(122,40,55,0.28)] md:p-8"
           >
             <p className="text-xl font-semibold text-ink">{p.name}</p>
             <p className="mt-2.5 line-clamp-3 flex-1 text-[15px] leading-relaxed text-body">
