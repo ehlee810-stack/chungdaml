@@ -63,7 +63,8 @@ export const productsSeed: ProductSeed[] = [
   {
     slug: "jamidusu-gunghap",
     name: "자미두수 궁합",
-    description: "자미두수 명반으로 두 사람의 인연과 궁합을 깊이 있게 분석",
+    description:
+      "두 사람의 자미두수 명반(명궁·부부궁·재백궁·관록궁)을 비교해 성격 궁합, 감정 표현 방식, 결혼 가능성, 장기 연애 안정성, 그리고 2026 병오년 연애 흐름까지 자세히 풀어드립니다.",
     price: 8900,
     display_order: 60,
     is_active: true,
@@ -71,7 +72,8 @@ export const productsSeed: ProductSeed[] = [
   {
     slug: "jamidusu-jaehoe",
     name: "자미두수 재회운",
-    description: "헤어진 인연과의 재회 가능성과 시기·흐름을 자미두수로 풀이",
+    description:
+      "부부궁·자녀궁·명궁·천이궁과 화록·화기·록존·유년 흐름을 살펴 재회 가능성과 재접촉 시기(4~6월·9월 전후), 재연결 이후 안정 또는 재충돌·반복 이별 패턴까지 풀어드립니다.",
     price: 14900,
     display_order: 70,
     is_active: true,
