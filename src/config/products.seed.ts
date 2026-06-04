@@ -17,7 +17,7 @@ export type ProductSeed = {
 export const productsSeed: ProductSeed[] = [
   {
     slug: "solo-saju",
-    name: "1인 종합 사주",
+    name: "종합사주(1인)",
     description: "사주 4기둥으로 보는 성향·대운·재물운·직업운 종합 리포트",
     price: 35000,
     compare_at_price: 70000,
@@ -26,7 +26,7 @@ export const productsSeed: ProductSeed[] = [
   },
   {
     slug: "couple-saju",
-    name: "2인 종합 사주",
+    name: "종합사주(2인)",
     description: "두 사람의 사주와 궁합을 함께 보는 종합 리포트",
     price: 65000,
     compare_at_price: 140000,
@@ -35,7 +35,7 @@ export const productsSeed: ProductSeed[] = [
   },
   {
     slug: "child-saju",
-    name: "1인 자녀 종합 사주",
+    name: "자녀사주(1인)",
     description: "자녀 한 명의 사주로 보는 공부 성향·적성·진로·학업운",
     price: 35000,
     compare_at_price: 70000,
@@ -44,7 +44,7 @@ export const productsSeed: ProductSeed[] = [
   },
   {
     slug: "children-saju",
-    name: "2인 자녀 종합 사주",
+    name: "자녀사주(2인)",
     description: "자녀 두 명을 함께 보는 학업·진로 리포트 (형제·자매 비교)",
     price: 65000,
     compare_at_price: 140000,
