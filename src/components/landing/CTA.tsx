@@ -20,7 +20,7 @@ export function CTA() {
           오늘, 내 운명의 흐름을 들여다보세요
         </h2>
         <p className="mt-3 text-sm text-white/70">
-          로그인 없이 게스트로도 편하게 보실 수 있어요
+          카카오 간편 로그인으로 회원가입하고 바로 확인하세요
         </p>
         <div className="mt-7">
           <Link

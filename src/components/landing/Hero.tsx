@@ -223,7 +223,7 @@ export function Hero() {
         </div>
 
         <p className="mt-6 text-[13px] text-mute">
-          로그인 없이 게스트로도 · 정통 만세력 기반 · 1900~2100년 분석
+          회원 전용 · 카카오 간편 로그인 · 정통 만세력 기반 1900~2100년 분석
         </p>
       </div>
     </section>
