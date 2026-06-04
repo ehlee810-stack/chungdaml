@@ -17,8 +17,12 @@ const notoSerifKr = Noto_Serif_KR({
 });
 
 export const metadata: Metadata = {
-  title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
+  title: { default: `${siteConfig.name} | ${siteConfig.tagline}`, template: `%s | ${siteConfig.name}` },
   description: siteConfig.description,
+  keywords: [
+    "청담엘사주", "청담엘", "사주", "사주풀이", "사주상담", "온라인 사주",
+    "궁합", "자미두수", "자미두수 궁합", "재회운", "신년운세", "자녀 사주",
+  ],
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     title: siteConfig.name,
