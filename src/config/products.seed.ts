@@ -57,7 +57,7 @@ export const productsSeed: ProductSeed[] = [
     description: "매주 내 사주 흐름에 맞춘 한 주 운세를 받아보는 주간 구독",
     price: 4900,
     compare_at_price: 9800,
-    display_order: 50,
+    display_order: 80,
     is_active: true,
   },
   {
