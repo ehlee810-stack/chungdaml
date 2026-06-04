@@ -182,11 +182,11 @@ export function Hero() {
 
       <div className="container relative py-28 text-center md:py-40">
         {/* 낙관(落款) — 붉은 도장 + 브랜드 한자 */}
-        <div className="mx-auto mb-7 flex w-fit items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-[5px] bg-yeonji text-[15px] font-semibold text-[#fdf6ea] shadow-sm">
+        <div className="mx-auto mb-7 flex w-fit items-center gap-3">
+          <span className="flex h-10 w-10 items-center justify-center rounded-[6px] bg-yeonji text-[17px] font-semibold text-[#fdf6ea] shadow-sm">
             印
           </span>
-          <span className="font-mono text-[12px] tracking-[0.35em] text-hanok-wood">
+          <span className="font-serif text-[20px] font-semibold tracking-[0.18em] text-hanok-wood md:text-[22px]">
             정통 사주명리
           </span>
         </div>
