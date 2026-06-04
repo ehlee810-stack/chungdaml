@@ -47,13 +47,16 @@ export default async function ProductsPage() {
             <Link
               key={p.slug}
               href={`/products/${p.slug}`}
-              className="group block rounded-lg border border-hairline bg-canvas p-6 transition-colors hover:border-ink"
+              className="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 transition-all duration-200 hover:-translate-y-1 hover:border-yeonji/50 hover:shadow-[0_12px_30px_-12px_rgba(122,40,55,0.25)]"
             >
               <p className="text-base font-semibold text-ink">{p.name}</p>
-              <p className="mt-1.5 text-sm text-body leading-relaxed line-clamp-2">
+              <p className="mt-1.5 line-clamp-2 flex-1 text-sm leading-relaxed text-body">
                 {p.description}
               </p>
               <PriceTag price={p.price} compareAt={p.compare_at_price} className="mt-5" />
+              <span className="mt-4 text-xs font-medium text-mute transition-colors group-hover:text-yeonji">
+                자세히 보기 →
+              </span>
             </Link>
           ))}
         </div>

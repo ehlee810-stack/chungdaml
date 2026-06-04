@@ -44,12 +44,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   );
 }
 
-// Ollama: 56px utility nav, primary nav on canvas, no shadow.
+// 한옥 헤더 — 명조 로고, 상단 고정 + 한지 블러.
 function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
   return (
-    <header className="border-b border-hairline bg-canvas">
+    <header className="sticky top-0 z-50 border-b border-hairline bg-canvas/85 backdrop-blur-md">
       <div className="container flex h-14 items-center justify-between">
-        <Link href="/" className="font-semibold text-[15px] text-ink">
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-serif text-[18px] font-bold tracking-tight text-ink"
+        >
+          <span className="flex h-6 w-6 items-center justify-center rounded-[4px] bg-yeonji text-[11px] font-semibold text-[#fdf6ea]">
+            印
+          </span>
           {siteConfig.name}
         </Link>
         <nav className="flex items-center gap-6 text-[13px] font-medium">
@@ -94,16 +100,31 @@ function SiteFooter() {
     .join(" | ");
 
   return (
-    <footer className="border-t border-hairline mt-20">
-      <div className="container py-10 text-xs text-body space-y-4">
-        <div className="flex flex-wrap gap-x-5 gap-y-1.5">
-          <Link href="/legal/terms" className="hover:text-ink">이용약관</Link>
-          <Link href="/legal/privacy" className="hover:text-ink">개인정보처리방침</Link>
-          <Link href="/legal/refund-policy" className="hover:text-ink">환불정책</Link>
+    <footer className="mt-24 border-t border-hairline bg-surface-soft">
+      <div className="container py-12">
+        {/* 브랜드 */}
+        <div className="mb-6 flex items-center gap-2">
+          <span className="flex h-7 w-7 items-center justify-center rounded-[4px] bg-yeonji text-xs font-semibold text-[#fdf6ea]">
+            印
+          </span>
+          <span className="font-serif text-lg font-bold tracking-tight text-ink">
+            {siteConfig.name}
+          </span>
         </div>
-        <p className="text-mute leading-relaxed">{businessLine}</p>
-        <p className="text-mute leading-relaxed">{contactLine}</p>
-        <p className="text-mute">© {new Date().getFullYear()} {siteConfig.name}</p>
+
+        {/* 약관 링크 */}
+        <div className="mb-6 flex flex-wrap gap-x-5 gap-y-1.5 text-[13px] font-medium text-charcoal">
+          <Link href="/legal/terms" className="hover:text-yeonji">이용약관</Link>
+          <Link href="/legal/privacy" className="hover:text-yeonji">개인정보처리방침</Link>
+          <Link href="/legal/refund-policy" className="hover:text-yeonji">환불정책</Link>
+        </div>
+
+        {/* 사업자 정보 */}
+        <div className="space-y-1.5 border-t border-hairline pt-6 text-xs leading-relaxed text-mute">
+          <p>{businessLine}</p>
+          <p>{contactLine}</p>
+          <p className="pt-1">© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
