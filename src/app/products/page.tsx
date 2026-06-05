@@ -33,10 +33,16 @@ export default async function ProductsPage() {
 
   return (
     <div className="container py-12">
-      <header className="mb-10">
-        <p className="text-xs font-mono text-mute mb-2">PRODUCTS</p>
-        <h1 className="text-3xl font-semibold tracking-tight">상품</h1>
-        <p className="mt-2 text-sm text-body">가볍게 시작해서 깊이 있게 들어가세요.</p>
+      <header className="mb-12">
+        <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-yeonji/30 bg-yeonji/10 px-3.5 py-1.5 text-xs font-bold tracking-wide text-yeonji">
+          🔒 회원 전용 사주 상담
+        </span>
+        <h1 className="font-serif text-[32px] font-bold leading-tight tracking-tight text-ink md:text-[42px]">
+          나만을 위한 사주 라인업
+        </h1>
+        <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-body">
+          가볍게 보는 운세부터 깊이 있는 종합 풀이까지 — 회원 전용으로 한 분 한 분 정성껏 풀어드립니다.
+        </p>
       </header>
 
       {!products || products.length === 0 ? (
