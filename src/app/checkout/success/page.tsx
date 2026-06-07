@@ -20,7 +20,7 @@ function CheckoutSuccessInner() {
   const search = useSearchParams();
   const [state, setState] = useState<"loading" | "ok" | "error">("loading");
   const [message, setMessage] = useState(
-    "결제가 완료되었어요. AI가 사주를 정성껏 풀이하는 중입니다… 최대 1분 정도 걸릴 수 있어요. 창을 닫지 말고 잠시만 기다려 주세요. 🔮",
+    "결제가 완료되었어요. 사주를 정성껏 풀이하고 있습니다… 최대 1분 정도 걸릴 수 있어요. 창을 닫지 말고 잠시만 기다려 주세요. 🔮",
   );
 
   useEffect(() => {

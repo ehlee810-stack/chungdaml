@@ -133,7 +133,7 @@ export default async function DemoPage({ searchParams }: { searchParams: SearchP
 
       {/* LLM 해석 */}
       <section className="mt-12">
-        <h2 className="text-sm font-semibold mb-3 text-ink">AI 해석</h2>
+        <h2 className="text-sm font-semibold mb-3 text-ink">사주 해석</h2>
         {interpretation ? (
           <article><ResultBody markdown={interpretation} /></article>
         ) : (

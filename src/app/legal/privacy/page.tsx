@@ -25,7 +25,7 @@ export default function PrivacyPage() {
         <li><strong>(선택)</strong> 생년월일, 성별</li>
         <li>서비스 이용 기록(이용자 식별자, 방문 일시, IP 주소, 부정 이용 기록, 서비스 이용 내역), 디바이스 정보(OS, 기종, 사용 언어), 쿠키가 자동 수집될 수 있습니다.</li>
       </ul>
-      <h3>2) AI 사주 분석 서비스 운영</h3>
+      <h3>2) 사주 분석 서비스 운영</h3>
       <ul>
         <li><strong>(필수)</strong> 닉네임, 생년월일, 성별, 출생 시각</li>
         <li><strong>(선택)</strong> 고민 키워드, 이름</li>
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
       <p>회사는 수집한 개인정보를 다음의 목적에만 이용합니다.</p>
       <ul>
         <li>이용자 식별 및 서비스 이용 의사 확인</li>
-        <li>AI 사주 분석 결과 생성 및 제공</li>
+        <li>사주 분석 결과 생성 및 제공</li>
         <li>결제 처리, 환불 및 분쟁 해결</li>
         <li>고객 문의 대응 및 서비스 개선</li>
         <li>부정 이용 방지, 계정 보호, 법령 및 이용약관 위반 행위 제한</li>
@@ -137,8 +137,8 @@ export default function PrivacyPage() {
               <td className="py-2 px-3">회원 탈퇴 시 또는 위탁 계약 종료 시까지</td>
             </tr>
             <tr className="border-b border-hairline">
-              <td className="py-2 px-3">OpenAI / Anthropic / Google</td>
-              <td className="py-2 px-3">AI 사주 분석 서비스 제공</td>
+              <td className="py-2 px-3">OpenAI, L.L.C.</td>
+              <td className="py-2 px-3">사주 해석 생성 처리</td>
               <td className="py-2 px-3">미국</td>
               <td className="py-2 px-3">서비스 이용 시점에 한하여 처리(별도 저장하지 않음)</td>
             </tr>
