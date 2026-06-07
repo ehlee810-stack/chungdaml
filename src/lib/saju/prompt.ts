@@ -28,21 +28,39 @@ const SYSTEM_BASE = `당신은 따뜻하고 공감력이 높은 사주 풀이 �
 - 점성/주술적 권유나 비과학적 단정은 피합니다.`;
 
 const STYLE_BY_SLUG: Record<string, { length: string; focus: string }> = {
-  "today-fortune": {
-    length: "2-3문장",
-    focus: "오늘 하루의 흐름과 작은 행동 팁 1개",
-  },
-  "basic-saju": {
-    length: "600-900자",
-    focus: "기본 성향, 강점, 보완점, 올해의 흐름",
-  },
-  "love-saju": {
-    length: "900-1200자",
-    focus: "연애 패턴, 잘 맞는 상대 유형, 갈등 패턴, 현재 관계 조언",
-  },
-  "premium-saju": {
+  // 청담엘사주 상품 라인업
+  "solo-saju": {
     length: "1500-2000자",
-    focus: "대운/세운 흐름, 직업운, 재물운, 건강운, 인간관계 종합",
+    focus: "타고난 성향과 기질, 강점·보완점, 대운/세운 흐름, 직업운, 재물운, 인간관계, 올해의 운세 흐름",
+  },
+  "couple-saju": {
+    length: "1600-2200자",
+    focus: "두 사람 각자의 성향, 궁합과 관계 강점, 갈등 패턴과 맞춰가는 법, 올해 두 사람의 관계 흐름",
+  },
+  "child-saju": {
+    length: "1200-1600자",
+    focus: "자녀의 타고난 기질·학습 성향·적성, 어울리는 진로 방향, 학업운 흐름, 부모를 위한 양육 조언",
+  },
+  "children-saju": {
+    length: "1800-2400자",
+    focus: "두 자녀 각자의 기질·적성·진로, 형제·자매 비교와 조화, 각자에게 맞는 양육·학습 전략",
+  },
+  "jamidusu-gunghap": {
+    length: "1500-2000자",
+    focus: "자미두수 명반 기반 두 사람의 성격 궁합, 감정 표현 방식, 결혼 가능성, 장기 연애 안정성, 올해 연애 흐름",
+  },
+  "jamidusu-jaehoe": {
+    length: "1200-1600자",
+    focus: "재회 가능성과 흐름, 재접촉 시기, 재연결 이후 주의할 패턴, 마음가짐 조언",
+  },
+  "weekly-fortune": {
+    length: "500-700자",
+    focus: "이번 한 주의 전반적 흐름, 분야별(일·관계·건강) 포인트, 한 주를 잘 보내는 행동 팁",
+  },
+  // 기본 폴백
+  "basic-saju": {
+    length: "1200-1600자",
+    focus: "기본 성향, 강점, 보완점, 올해의 흐름",
   },
 };
 
@@ -63,8 +81,11 @@ export function buildSajuPrompt(input: PromptInput): { system: string; user: str
         `- 시주: ${pillar(m.hour)}`,
       ].join("\n");
 
+  const currentYear = new Date().getFullYear();
+
   const user = `[상품] ${input.productName}
-[분량] 약 ${style.length}
+[현재 연도] ${currentYear}년 — "올해/내년"은 이 연도 기준으로 작성하세요. 과거 연도(예: 2023)를 현재처럼 쓰지 마세요.
+[분량] 약 ${style.length} (이 분량을 반드시 채워 충분히 상세하게 작성)
 [핵심 포커스] ${style.focus}
 
 ${sajuSection}
