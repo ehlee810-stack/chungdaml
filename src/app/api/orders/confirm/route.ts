@@ -13,6 +13,9 @@ import {
   type BirthInfo,
 } from "@/lib/saju/saju-api";
 
+// 프리미엄 리포트는 LLM 생성이 길어 시간이 걸리므로 함수 실행시간을 넉넉히.
+export const maxDuration = 60;
+
 const bodySchema = z.object({
   paymentKey: z.string().min(1),
   orderId: z.string().min(1),
