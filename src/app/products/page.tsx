@@ -4,7 +4,7 @@ import { PriceTag } from "@/components/PriceTag";
 import { isSupabaseConfigured } from "@/lib/env";
 import { productsSeed } from "@/config/products.seed";
 
-export const metadata = { title: "상품" };
+export const metadata = { title: "사주 라인업" };
 
 export default async function ProductsPage() {
   let products:
