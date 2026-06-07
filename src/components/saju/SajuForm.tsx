@@ -73,7 +73,15 @@ export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="birthDate">생년월일</Label>
-          <Input id="birthDate" type="date" required value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
+          <Input
+            id="birthDate"
+            type="date"
+            required
+            min="1900-01-01"
+            max="2100-12-31"
+            value={birthDate}
+            onChange={(e) => setBirthDate(e.target.value)}
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="birthTime">출생 시각</Label>
