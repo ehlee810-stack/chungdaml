@@ -38,7 +38,7 @@ function CheckoutSuccessInner() {
           body: JSON.stringify({ paymentKey, orderId, amount }),
         });
         const json = await res.json();
-        if (!res.ok) throw new Error(json.error ?? "결제 승인 실패");
+        if (!res.ok) throw new Error((json.error ?? "결제 승인 실패") + (json.detail ? ` — ${json.detail}` : ""));
         if (json.resultId) {
           router.replace(`/results/${json.resultId}`);
         } else {
