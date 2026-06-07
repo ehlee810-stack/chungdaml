@@ -32,7 +32,7 @@ export async function generateInterpretation(req: LlmRequest): Promise<LlmRespon
 async function callOpenAI(req: LlmRequest, model: string, key: string | undefined): Promise<LlmResponse> {
   if (!key) throw new Error("OPENAI_API_KEY is required when LLM_PROVIDER=openai");
   const { default: OpenAI } = await import("openai");
-  const client = new OpenAI({ apiKey: key });
+  const client = new OpenAI({ apiKey: key.trim() });
   const completion = await client.chat.completions.create({
     model,
     messages: [
@@ -48,7 +48,7 @@ async function callOpenAI(req: LlmRequest, model: string, key: string | undefine
 async function callAnthropic(req: LlmRequest, model: string, key: string | undefined): Promise<LlmResponse> {
   if (!key) throw new Error("ANTHROPIC_API_KEY is required when LLM_PROVIDER=anthropic");
   const Anthropic = (await import("@anthropic-ai/sdk")).default;
-  const client = new Anthropic({ apiKey: key });
+  const client = new Anthropic({ apiKey: key.trim() });
   const message = await client.messages.create({
     model,
     max_tokens: 2048,
@@ -64,7 +64,7 @@ async function callAnthropic(req: LlmRequest, model: string, key: string | undef
 async function callGemini(req: LlmRequest, model: string, key: string | undefined): Promise<LlmResponse> {
   if (!key) throw new Error("GOOGLE_GENERATIVE_AI_API_KEY is required when LLM_PROVIDER=gemini");
   const { GoogleGenerativeAI } = await import("@google/generative-ai");
-  const client = new GoogleGenerativeAI(key);
+  const client = new GoogleGenerativeAI(key.trim());
   const m = client.getGenerativeModel({ model, systemInstruction: req.system });
   const result = await m.generateContent(req.user);
   const text = result.response.text();
