@@ -19,7 +19,9 @@ function CheckoutSuccessInner() {
   const router = useRouter();
   const search = useSearchParams();
   const [state, setState] = useState<"loading" | "ok" | "error">("loading");
-  const [message, setMessage] = useState("결제 승인 중...");
+  const [message, setMessage] = useState(
+    "결제가 완료되었어요. AI가 사주를 정성껏 풀이하는 중입니다… 최대 1분 정도 걸릴 수 있어요. 창을 닫지 말고 잠시만 기다려 주세요. 🔮",
+  );
 
   useEffect(() => {
     const paymentKey = search.get("paymentKey");
@@ -56,10 +58,20 @@ function CheckoutSuccessInner() {
     <div className="container py-16 max-w-md">
       <Card>
         <CardHeader>
-          <CardTitle>{state === "error" ? "결제 처리 실패" : "결제 완료"}</CardTitle>
+          <CardTitle>
+            {state === "error"
+              ? "결제 처리 실패"
+              : state === "loading"
+                ? "결제 완료 · 사주 분석 중"
+                : "결제 완료"}
+          </CardTitle>
           <CardDescription>{message}</CardDescription>
         </CardHeader>
-        {state !== "loading" && (
+        {state === "loading" ? (
+          <CardContent className="flex items-center justify-center py-6">
+            <span className="h-8 w-8 animate-spin rounded-full border-2 border-hairline border-t-yeonji" />
+          </CardContent>
+        ) : (
           <CardContent>
             <Link href="/" className={cn(buttonVariants({ variant: "outline" }), "w-full")}>
               홈으로
