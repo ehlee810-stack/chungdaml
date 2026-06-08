@@ -16,13 +16,16 @@ type Props = {
 };
 
 const CONCERN_OPTIONS = ["연애", "결혼", "직장", "재물", "건강", "학업", "이직", "사업"];
+const PET_CONCERN_OPTIONS = ["건강", "성격", "분리불안", "식습관", "사회성", "주인과의 궁합"];
 
 export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
   const router = useRouter();
+  const isPet = productSlug === "pet-saju";
+  const concernOptions = isPet ? PET_CONCERN_OPTIONS : CONCERN_OPTIONS;
   const [name, setName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [birthTime, setBirthTime] = useState("");
-  const [timeUnknown, setTimeUnknown] = useState(false);
+  const [timeUnknown, setTimeUnknown] = useState(isPet);
   const [gender, setGender] = useState<"male" | "female">("male");
   const [calendar, setCalendar] = useState<"solar" | "lunar">("solar");
   const [concerns, setConcerns] = useState<string[]>([]);
@@ -66,8 +69,13 @@ export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="space-y-2">
-        <Label htmlFor="name">이름 (선택)</Label>
-        <Input id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="홍길동" />
+        <Label htmlFor="name">{isPet ? "반려동물 이름 (선택)" : "이름 (선택)"}</Label>
+        <Input
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder={isPet ? "초코, 나비" : "홍길동"}
+        />
       </div>
 
       <div className="grid grid-cols-2 gap-4">
@@ -110,7 +118,7 @@ export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
                 onClick={() => setGender(g)}
                 className={`flex-1 h-10 rounded-full border text-sm transition-colors ${gender === g ? "border-ink bg-ink text-canvas" : "border-hairline text-ink hover:border-ink"}`}
               >
-                {g === "male" ? "남성" : "여성"}
+                {g === "male" ? (isPet ? "수컷" : "남성") : isPet ? "암컷" : "여성"}
               </button>
             ))}
           </div>
@@ -133,9 +141,9 @@ export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
       </div>
 
       <div className="space-y-2">
-        <Label>고민 (복수 선택)</Label>
+        <Label>{isPet ? "관심사 (복수 선택)" : "고민 (복수 선택)"}</Label>
         <div className="flex flex-wrap gap-2">
-          {CONCERN_OPTIONS.map((c) => (
+          {concernOptions.map((c) => (
             <button
               type="button"
               key={c}
