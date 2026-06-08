@@ -48,11 +48,11 @@ export async function ProductLineup() {
           사주 라인업
         </h2>
         <p className="mx-auto mt-5 max-w-lg text-[15px] leading-relaxed text-body">
-          가볍게 보는 이번주 운세부터 깊이 있는 종합 사주까지, 원하는 만큼 들여다보세요.
+          종합 사주부터 연애·재회, 자녀, 반려동물 사주까지 — 원하는 만큼 깊이 있게 들여다보세요.
         </p>
       </div>
       <div className="grid gap-6 md:grid-cols-2">
-        {products.map((p) => (
+        {products.slice(0, 6).map((p) => (
           <Link
             key={p.slug}
             href={`/products/${p.slug}`}
@@ -74,6 +74,17 @@ export async function ProductLineup() {
           </Link>
         ))}
       </div>
+
+      {products.length > 6 && (
+        <div className="mt-10 text-center">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-1.5 rounded-full border border-hairline-strong px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-yeonji hover:text-yeonji"
+          >
+            전체 사주 {products.length}종 보기 →
+          </Link>
+        </div>
+      )}
     </section>
   );
 }
