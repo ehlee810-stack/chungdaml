@@ -24,7 +24,7 @@ export function Intro() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-3 font-mono text-xs tracking-[0.3em] text-yeonji">WHY 청담엘사주</p>
           <h2 className="font-serif text-2xl font-bold tracking-tight text-ink md:text-[34px]">
-            천 년을 이어온 지혜로,<br className="hidden sm:block" /> 당신의 때와 길을 읽습니다
+            천 년을 이어온 지혜로,<br /> 당신의 때와 길을 읽습니다
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-body">
             사주(四柱)는 태어난 연·월·일·시 네 기둥에 새겨진 하늘의 이치입니다.

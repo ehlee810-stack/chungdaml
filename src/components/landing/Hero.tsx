@@ -185,7 +185,11 @@ export function Hero() {
         </h1>
 
         <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-charcoal md:mt-6 md:text-[17px]">
-          {siteConfig.description}
+          정통 만세력과 깊이 있는 해석이 만나는 사주 상담.
+          <br className="hidden sm:block" />
+          {" "}오늘의 운세부터 연애·궁합, 직업운, 재물운까지
+          <br className="hidden sm:block" />
+          {" "}한 분 한 분 정성껏 풀어드립니다.
         </p>
 
         {/* 조각보 — 굵은 포인트 띠 */}
@@ -212,7 +216,9 @@ export function Hero() {
         </div>
 
         <p className="mx-auto mt-6 max-w-sm text-[12px] leading-relaxed text-mute md:max-w-none md:text-[13px]">
-          회원 전용 · 카카오 간편 로그인 · 정통 만세력 기반 1900~2100년 분석
+          <span className="block md:inline">회원 전용 · 카카오 간편 로그인</span>
+          <span className="hidden md:inline"> · </span>
+          <span className="block md:inline">정통 만세력 기반 · 1900~2100년 분석</span>
         </p>
       </div>
     </section>
