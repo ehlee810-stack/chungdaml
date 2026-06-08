@@ -180,8 +180,13 @@ export function Hero() {
           </span>
         </div>
 
-        <h1 className="mx-auto max-w-3xl font-serif text-[32px] font-bold leading-[1.18] tracking-tight text-ink sm:text-[40px] md:text-[64px] md:leading-[1.12]">
-          {siteConfig.tagline}
+        <h1 className="mx-auto max-w-3xl font-serif text-[27px] font-bold leading-[1.3] tracking-tight text-ink sm:text-[34px] md:text-[50px] md:leading-[1.2]">
+          {siteConfig.tagline.split(", ").map((part, i, arr) => (
+            <span key={i} className="block">
+              {part}
+              {i < arr.length - 1 ? "," : ""}
+            </span>
+          ))}
         </h1>
 
         <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-charcoal md:mt-6 md:text-[17px]">

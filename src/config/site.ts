@@ -5,7 +5,7 @@
 
 export const siteConfig = {
   name: "청담엘사주",
-  tagline: "하늘이 새긴 운명을 읽다",
+  tagline: "천간지지에 새겨진 운명, 당신의 때를 명확하게 풀어드립니다",
   description: "정통 만세력과 깊이 있는 해석이 만나는 사주 상담. 오늘의 운세부터 연애·궁합, 직업운, 재물운까지 한 분 한 분 정성껏 풀어드립니다.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "support@example.com",
