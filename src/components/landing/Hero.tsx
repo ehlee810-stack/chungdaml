@@ -180,13 +180,10 @@ export function Hero() {
           </span>
         </div>
 
-        <h1 className="mx-auto max-w-3xl font-serif text-[27px] font-bold leading-[1.3] tracking-tight text-ink sm:text-[34px] md:text-[50px] md:leading-[1.2]">
-          {siteConfig.tagline.split(", ").map((part, i, arr) => (
-            <span key={i} className="block">
-              {part}
-              {i < arr.length - 1 ? "," : ""}
-            </span>
-          ))}
+        <h1 className="mx-auto max-w-3xl font-serif text-[28px] font-bold leading-[1.35] tracking-tight text-ink sm:text-[34px] md:text-[50px] md:leading-[1.25]">
+          <span className="block">천간지지에 새겨진 운명,</span>
+          <span className="block">당신의 때를</span>
+          <span className="block">명확하게 풀어드립니다</span>
         </h1>
 
         <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-charcoal md:mt-6 md:text-[17px]">
