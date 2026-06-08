@@ -78,4 +78,34 @@ export const productsSeed: ProductSeed[] = [
     display_order: 70,
     is_active: true,
   },
+  {
+    slug: "love-fortune",
+    name: "연애운",
+    description:
+      "타고난 연애 성향과 매력, 잘 맞는 사람 유형, 인연이 들어오는 시기와 기회, 올해의 연애·인연 흐름까지 사주로 짚어드립니다.",
+    price: 19900,
+    compare_at_price: 39900,
+    display_order: 50,
+    is_active: true,
+  },
+  {
+    slug: "reunion",
+    name: "재회운",
+    description:
+      "지난 인연과의 재회 가능성, 재회의 기회가 오는 시기, 재회 이후의 흐름과 주의할 점, 마음을 정리하고 나아가는 조언까지 사주로 풀어드립니다.",
+    price: 14900,
+    compare_at_price: 29900,
+    display_order: 72,
+    is_active: true,
+  },
+  {
+    slug: "pet-saju",
+    name: "반려동물 사주",
+    description:
+      "우리 아이(반려동물)의 타고난 기질과 성향, 주인과의 궁합, 건강에서 살필 점, 더 잘 지내는 법까지 사주로 다정하게 풀어드립니다.",
+    price: 12900,
+    compare_at_price: 24900,
+    display_order: 90,
+    is_active: true,
+  },
 ];
