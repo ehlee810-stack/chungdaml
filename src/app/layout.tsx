@@ -83,52 +83,68 @@ function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
   );
 }
 
-// Ollama: footer is a quiet caption-gray strip with hairline divider.
+// 가운데 정렬 푸터 — 브랜드 / 사업자정보(항목별) / 약관 / 카피라이트
 function SiteFooter() {
-  // 사업자정보 한 줄 — 운세위키 푸터 포맷: "회사 | 사업자등록번호: ... | 통신판매업 신고번호: ... | 대표: ... | 주소: ..."
-  const businessLine = [
-    businessInfo.companyName,
-    `사업자등록번호: ${businessInfo.businessNumber}`,
-    `통신판매업 신고번호: ${businessInfo.mailOrderNumber}`,
-    `대표: ${businessInfo.representative}`,
-    `주소: ${businessInfo.address}`,
-  ].join(" | ");
-
-  const contactLine = [
-    `고객센터: ${businessInfo.email}`,
-    businessInfo.phone
-      ? `핸드폰${businessInfo.phoneNote ? `(${businessInfo.phoneNote})` : ""}: ${businessInfo.phone}`
-      : null,
-  ]
-    .filter(Boolean)
-    .join(" | ");
+  const year = new Date().getFullYear();
+  const Sep = () => <span className="mx-2 text-hairline">|</span>;
+  const Lb = ({ children }: { children: React.ReactNode }) => (
+    <span className="font-semibold text-charcoal">{children}</span>
+  );
 
   return (
     <footer className="mt-24 border-t border-hairline bg-surface-soft">
-      <div className="container py-12">
+      <div className="container py-14 text-center">
         {/* 브랜드 */}
-        <div className="mb-6 flex items-center gap-2">
-          <span className="flex h-7 w-7 items-center justify-center rounded-[4px] bg-yeonji text-xs font-semibold text-[#fdf6ea]">
+        <div className="mb-7 flex items-center justify-center gap-2">
+          <span className="flex h-8 w-8 items-center justify-center rounded-[4px] bg-yeonji text-sm font-semibold text-[#fdf6ea]">
             印
           </span>
-          <span className="font-serif text-lg font-bold tracking-tight text-ink">
+          <span className="font-serif text-xl font-bold tracking-tight text-ink">
             {siteConfig.name}
           </span>
         </div>
 
+        {/* 사업자 정보 */}
+        <div className="space-y-2 text-[13px] leading-relaxed text-mute">
+          <p>
+            <Lb>상호</Lb> {businessInfo.companyName}
+            <Sep />
+            <Lb>대표</Lb> {businessInfo.representative}
+          </p>
+          <p>{businessInfo.address}</p>
+          <p>
+            <Lb>통신판매업 신고</Lb> {businessInfo.mailOrderNumber}
+          </p>
+          <p>
+            <Lb>사업자등록번호</Lb> {businessInfo.businessNumber}
+          </p>
+          <p>
+            <Lb>고객센터</Lb> 카카오톡 {siteConfig.name} 채널
+            <Sep />
+            <Lb>MAIL</Lb> {businessInfo.email}
+          </p>
+          {businessInfo.phone && (
+            <p className="pt-1">
+              <Lb>대표번호</Lb> {businessInfo.phone}
+              {businessInfo.phoneNote && (
+                <span className="mt-0.5 block text-xs text-mute">({businessInfo.phoneNote})</span>
+              )}
+            </p>
+          )}
+        </div>
+
         {/* 약관 링크 */}
-        <div className="mb-6 flex flex-wrap gap-x-5 gap-y-1.5 text-[13px] font-medium text-charcoal">
+        <div className="mt-7 flex items-center justify-center text-[13px] font-medium text-charcoal">
           <Link href="/legal/terms" className="hover:text-yeonji">이용약관</Link>
+          <Sep />
           <Link href="/legal/privacy" className="hover:text-yeonji">개인정보처리방침</Link>
+          <Sep />
           <Link href="/legal/refund-policy" className="hover:text-yeonji">환불정책</Link>
         </div>
 
-        {/* 사업자 정보 */}
-        <div className="space-y-1.5 border-t border-hairline pt-6 text-xs leading-relaxed text-mute">
-          <p>{businessLine}</p>
-          <p>{contactLine}</p>
-          <p className="pt-1">© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-        </div>
+        <p className="mt-5 text-xs text-mute">
+          Copyright © {year} {siteConfig.name} · All rights reserved
+        </p>
       </div>
     </footer>
   );
