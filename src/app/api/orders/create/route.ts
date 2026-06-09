@@ -3,6 +3,15 @@ import { z } from "zod";
 import { nanoid } from "nanoid";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 
+const personSchema = z.object({
+  name: z.string().max(50).optional(),
+  birthDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  birthTime: z.string().regex(/^\d{2}:\d{2}$/).nullable(),
+  timeUnknown: z.boolean(),
+  gender: z.enum(["male", "female"]),
+  calendar: z.enum(["solar", "lunar"]),
+});
+
 const bodySchema = z.object({
   productId: z.string().uuid(),
   name: z.string().max(50).optional(),
@@ -12,6 +21,7 @@ const bodySchema = z.object({
   gender: z.enum(["male", "female"]),
   calendar: z.enum(["solar", "lunar"]),
   concerns: z.array(z.string().max(20)).max(20),
+  partner: personSchema.nullable().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -69,6 +79,7 @@ export async function POST(request: NextRequest) {
     gender: body.gender,
     calendar: body.calendar,
     concerns: body.concerns,
+    partner: body.partner ?? null,
   });
 
   if (inputErr) {

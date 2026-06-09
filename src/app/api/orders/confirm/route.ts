@@ -12,6 +12,28 @@ import {
   ganjiToMyeongsik,
   type BirthInfo,
 } from "@/lib/saju/saju-api";
+import { twoPersonLabels } from "@/config/two-person";
+import type { PartnerInput } from "@/types/database";
+
+// 두 번째 사람(partner) jsonb → BirthInfo
+function partnerToBirthInfo(p: PartnerInput): BirthInfo {
+  const [y, m, d] = p.birthDate.split("-");
+  const hasTime = !p.timeUnknown && !!p.birthTime;
+  const [hh, mm] = hasTime ? p.birthTime!.split(":") : [undefined, undefined];
+  return {
+    birthYear: y,
+    birthMonth: String(parseInt(m, 10)),
+    birthDay: String(parseInt(d, 10)),
+    ...(hasTime ? { birthHour: String(parseInt(hh!, 10)), birthMinute: String(parseInt(mm!, 10)) } : {}),
+    calendarType: p.calendar === "lunar" ? "음력" : "양력",
+    gender: p.gender,
+  };
+}
+
+function partnerBasicText(p: PartnerInput): string {
+  const time = p.timeUnknown ? " (시 미상)" : p.birthTime ? ` ${p.birthTime}` : "";
+  return `생년월일: ${p.birthDate}${time} / 성별: ${p.gender === "male" ? "남성" : "여성"} / 달력: ${p.calendar === "lunar" ? "음력" : "양력"}`;
+}
 
 // 프리미엄 리포트는 LLM 생성이 길어 시간이 걸리므로 함수 실행시간을 넉넉히.
 export const maxDuration = 60;
@@ -150,11 +172,32 @@ export async function POST(request: NextRequest) {
       myeongsik = await computeMyeongsik(toComputeInput(input));
     }
 
+    // 2인 상품: 두 번째 사람 명식
+    const labels = twoPersonLabels(product.slug);
+    const partner = input.partner as PartnerInput | null;
+    let partnerSajuText: string | undefined;
+    if (labels && partner) {
+      if (isSajuApiConfigured()) {
+        try {
+          const pBirth = partnerToBirthInfo(partner);
+          const pAnalysis = await fetchSajuAnalysis(pBirth, [], { source: "confirm" });
+          partnerSajuText = formatSajuToManseryeok(pAnalysis, pBirth);
+        } catch {
+          partnerSajuText = partnerBasicText(partner);
+        }
+      } else {
+        partnerSajuText = partnerBasicText(partner);
+      }
+    }
+
     const { system, user } = buildSajuPrompt({
       productSlug: product.slug,
       productName: product.name,
       myeongsik,
       manseryeokText,
+      selfLabel: labels?.label1,
+      partnerLabel: labels?.label2,
+      partnerSajuText,
       birthDate: input.birth_date,
       birthTime: input.birth_time,
       timeUnknown: input.time_unknown,

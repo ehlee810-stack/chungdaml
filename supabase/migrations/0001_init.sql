@@ -84,6 +84,7 @@ create table public.saju_inputs (
   gender public.gender_kind not null,
   calendar public.calendar_kind not null default 'solar',
   concerns text[] not null default '{}',
+  partner jsonb,
   created_at timestamptz not null default now()
 );
 

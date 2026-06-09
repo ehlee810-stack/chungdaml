@@ -47,6 +47,15 @@ type OrderRow = {
   created_at: string;
 };
 
+export type PartnerInput = {
+  name?: string;
+  birthDate: string;
+  birthTime: string | null;
+  timeUnknown: boolean;
+  gender: GenderKind;
+  calendar: CalendarKind;
+};
+
 type SajuInputRow = {
   id: string;
   order_id: string;
@@ -57,6 +66,7 @@ type SajuInputRow = {
   gender: GenderKind;
   calendar: CalendarKind;
   concerns: string[];
+  partner: PartnerInput | null;
   created_at: string;
 };
 
@@ -149,6 +159,7 @@ export type Database = {
           gender: GenderKind;
           calendar?: CalendarKind;
           concerns?: string[];
+          partner?: PartnerInput | null;
           created_at?: string;
         };
         Update: Partial<SajuInputRow>;

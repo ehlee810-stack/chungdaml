@@ -16,6 +16,10 @@ export type PromptInput = {
   timeUnknown: boolean;
   gender: "male" | "female";
   concerns: string[];
+  // 2인 상품: 두 번째 사람
+  selfLabel?: string;
+  partnerLabel?: string;
+  partnerSajuText?: string; // 두 번째 사람의 명식 텍스트(또는 기본정보)
 };
 
 const SYSTEM_BASE = `당신은 20년 경력의 사주명리 전문가이자 따뜻한 상담가입니다. 지금 작성하는 것은 고객이 비용을 지불한 '유료 프리미엄 사주 리포트'입니다.
@@ -175,15 +179,19 @@ export function buildSajuPrompt(input: PromptInput): { system: string; user: str
   const pillar = (p: { cheongan: string; jiji: string } | null) =>
     p ? `${p.cheongan}${p.jiji}` : "(시 미상)";
 
-  const sajuSection = input.manseryeokText
-    ? `[사주 풀 명식]\n${input.manseryeokText}`
+  const selfBody = input.manseryeokText
+    ? input.manseryeokText
     : [
-        `[사주 4기둥]`,
         `- 년주: ${pillar(m.year)}`,
         `- 월주: ${pillar(m.month)}`,
         `- 일주: ${pillar(m.day)}`,
         `- 시주: ${pillar(m.hour)}`,
       ].join("\n");
+
+  // 2인 상품: 두 사람의 명식을 각각 라벨링해서 제공
+  const sajuSection = input.partnerSajuText
+    ? `[${input.selfLabel ?? "첫 번째 사람"} 사주 명식]\n${selfBody}\n\n[${input.partnerLabel ?? "두 번째 사람"} 사주 명식]\n${input.partnerSajuText}`
+    : `[사주 명식]\n${selfBody}`;
 
   const currentYear = new Date().getFullYear();
 
