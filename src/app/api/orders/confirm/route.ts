@@ -11,21 +11,7 @@ import {
   formatSajuToManseryeok,
   ganjiToMyeongsik,
   type BirthInfo,
-  type AnalysisField,
 } from "@/lib/saju/saju-api";
-
-// 해석에 꼭 필요한 핵심 항목만 요청 (입력 토큰 절감 — OpenAI TPM 한도 대응)
-const ESSENTIAL_FIELDS: AnalysisField[] = [
-  "ganji",
-  "sipseong",
-  "sinStrength",
-  "gyeokguk",
-  "daeun",
-  "seun",
-  "twelveFortune",
-  "guiin",
-  "dohwa",
-];
 
 // 프리미엄 리포트는 LLM 생성이 길어 시간이 걸리므로 함수 실행시간을 넉넉히.
 export const maxDuration = 60;
@@ -146,7 +132,7 @@ export async function POST(request: NextRequest) {
     if (isSajuApiConfigured()) {
       try {
         const birthInfo = toBirthInfo(input);
-        const analysis = await fetchSajuAnalysis(birthInfo, ESSENTIAL_FIELDS, { source: "confirm" });
+        const analysis = await fetchSajuAnalysis(birthInfo, [], { source: "confirm" }); // [] = 16종 전체
         const converted = ganjiToMyeongsik(analysis);
         if (converted) {
           myeongsik = converted;

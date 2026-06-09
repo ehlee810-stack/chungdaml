@@ -47,7 +47,7 @@ const STYLE_BY_SLUG: Record<string, Style> = {
 ## 마무리 조언 — 따뜻한 응원과 핵심 실천 1~2가지`,
   },
   "couple-saju": {
-    length: "3500~4800자",
+    length: "4000~5500자",
     sections: `## 총평 — 두 분의 인연을 한눈에
 ## 첫 번째 분의 성향
 ## 두 번째 분의 성향
@@ -73,7 +73,7 @@ const STYLE_BY_SLUG: Record<string, Style> = {
 ## 마무리 — 부모님께 드리는 따뜻한 조언`,
   },
   "children-saju": {
-    length: "4000~5000자",
+    length: "4500~6000자",
     sections: `## 총평 — 두 아이를 함께 보며
 ## 첫째 아이 — 기질·학습 스타일·강점·적성·진로
 ## 둘째 아이 — 기질·학습 스타일·강점·적성·진로
