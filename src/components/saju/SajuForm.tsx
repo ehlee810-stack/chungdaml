@@ -18,6 +18,7 @@ type Props = {
 
 const CONCERN_OPTIONS = ["연애", "결혼", "직장", "재물", "건강", "학업", "이직", "사업"];
 const PET_CONCERN_OPTIONS = ["건강", "성격", "분리불안", "식습관", "사회성", "주인과의 궁합"];
+const CHILD_CONCERN_OPTIONS = ["성격·기질", "재능·적성", "학업·공부", "진로·진학", "교우관계", "건강", "생활습관"];
 
 type Person = {
   name: string;
@@ -37,22 +38,26 @@ function PersonFields({
   person,
   set,
   isPet,
+  isChild,
   idPrefix,
 }: {
   person: Person;
   set: (patch: Partial<Person>) => void;
   isPet: boolean;
+  isChild?: boolean;
   idPrefix: string;
 }) {
+  const nameLabel = isPet ? "반려동물 이름 (선택)" : isChild ? "아이 이름 (선택)" : "이름 (선택)";
+  const namePlaceholder = isPet ? "초코, 나비" : isChild ? "우리 아이 이름" : "홍길동";
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor={`${idPrefix}-name`}>{isPet ? "반려동물 이름 (선택)" : "이름 (선택)"}</Label>
+        <Label htmlFor={`${idPrefix}-name`}>{nameLabel}</Label>
         <Input
           id={`${idPrefix}-name`}
           value={person.name}
           onChange={(e) => set({ name: e.target.value })}
-          placeholder={isPet ? "초코, 나비" : "홍길동"}
+          placeholder={namePlaceholder}
         />
       </div>
 
@@ -128,9 +133,14 @@ function PersonFields({
 export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
   const router = useRouter();
   const isPet = productSlug === "pet-saju";
+  const isChild = productSlug === "child-saju";
   const labels = twoPersonLabels(productSlug);
   const isTwo = !!labels;
-  const concernOptions = isPet ? PET_CONCERN_OPTIONS : CONCERN_OPTIONS;
+  const concernOptions = isPet
+    ? PET_CONCERN_OPTIONS
+    : isChild
+      ? CHILD_CONCERN_OPTIONS
+      : CONCERN_OPTIONS;
 
   const [p1, setP1] = useState<Person>(emptyPerson(isPet));
   const [p2, setP2] = useState<Person>(emptyPerson());
@@ -195,7 +205,7 @@ export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
       {isTwo && (
         <p className="text-sm font-semibold text-yeonji">① {labels!.label1}</p>
       )}
-      <PersonFields person={p1} set={patch1} isPet={isPet} idPrefix="p1" />
+      <PersonFields person={p1} set={patch1} isPet={isPet} isChild={isChild} idPrefix="p1" />
 
       {/* 두 번째 사람 (2인 상품) */}
       {isTwo && (
@@ -208,7 +218,7 @@ export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
       {/* 고민 (1인 상품만) */}
       {!isTwo && (
         <div className="space-y-2">
-          <Label>{isPet ? "관심사 (복수 선택)" : "고민 (복수 선택)"}</Label>
+          <Label>{isPet ? "관심사 (복수 선택)" : isChild ? "우리 아이 관심사 (복수 선택)" : "고민 (복수 선택)"}</Label>
           <div className="flex flex-wrap gap-2">
             {concernOptions.map((c) => (
               <button
