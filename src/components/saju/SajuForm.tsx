@@ -134,6 +134,7 @@ export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
   const router = useRouter();
   const isPet = productSlug === "pet-saju";
   const isChild = productSlug === "child-saju";
+  const hideConcerns = productSlug === "weekly-fortune";
   const labels = twoPersonLabels(productSlug);
   const isTwo = !!labels;
   const concernOptions = isPet
@@ -215,8 +216,8 @@ export function SajuForm({ productId, productSlug, isLoggedIn }: Props) {
         </div>
       )}
 
-      {/* 고민 (1인 상품만) */}
-      {!isTwo && (
+      {/* 고민 (1인 상품만, 이번주 운세 제외) */}
+      {!isTwo && !hideConcerns && (
         <div className="space-y-2">
           <Label>{isPet ? "관심사 (복수 선택)" : isChild ? "우리 아이 관심사 (복수 선택)" : "고민 (복수 선택)"}</Label>
           <div className="flex flex-wrap gap-2">
