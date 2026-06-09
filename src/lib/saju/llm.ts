@@ -35,7 +35,7 @@ async function callOpenAI(req: LlmRequest, model: string, key: string | undefine
   const client = new OpenAI({ apiKey: key.trim() });
   const completion = await client.chat.completions.create({
     model: model.trim(),
-    max_tokens: 12000,
+    max_tokens: 9000,
     messages: [
       { role: "system", content: req.system },
       { role: "user", content: req.user },
