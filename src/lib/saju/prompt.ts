@@ -187,21 +187,26 @@ export function buildSajuPrompt(input: PromptInput): { system: string; user: str
 
   const currentYear = new Date().getFullYear();
 
-  const user = `[상품] ${input.productName} (유료 프리미엄 리포트)
-[현재 연도] ${currentYear}년 — "올해/내년"은 이 연도 기준으로 작성하세요. 과거 연도(예: 2023)를 현재처럼 쓰지 마세요.
-[분량] 약 ${style.length} — 반드시 이 분량을 충실히 채워, 유료 상담에 걸맞은 깊이로 작성하세요.
+  const user = `${sajuSection}
 
-[구성] 아래 섹션을 모두 포함하고, 각 섹션을 충분히 상세하게 작성하세요:
-${style.sections}
-
-${sajuSection}
-
-[기본 정보]
+[의뢰인 기본 정보]
 - 생년월일: ${input.birthDate}${input.timeUnknown ? " (시 미상)" : input.birthTime ? ` ${input.birthTime}` : ""}
 - 성별: ${input.gender === "male" ? "남성" : "여성"}
 - 고민 키워드: ${input.concerns.length > 0 ? input.concerns.join(", ") : "(미입력)"}
 
-위 정보를 바탕으로, 고객이 "돈이 아깝지 않다"고 느낄 만큼 깊이 있고 풍성한 마크다운 리포트를 작성해 주세요.${
+==============================
+■ 작성 지시 (반드시 그대로 따르세요)
+
+이 리포트는 오직 '${input.productName}' 상품을 위한 것입니다.
+- 이 상품의 목적에만 집중하세요. 다른 종류의 사주 상품용 내용이나 섹션을 절대 넣지 마세요.
+- 아래 [구성]의 섹션 제목(##)을 **그대로, 같은 순서로** 사용하세요. 섹션을 빼거나 다른 섹션을 임의로 추가하지 마세요.
+
+[현재 연도] ${currentYear}년 — "올해/내년"은 이 연도 기준. 과거 연도(예: 2023)를 현재처럼 쓰지 마세요.
+[분량] 약 ${style.length} — 반드시 이 분량을 채워 유료 상담 수준의 깊이로.
+[구성]
+${style.sections}
+
+위 사주 명식을 근거로, '${input.productName}'에 딱 맞는 풍성한 마크다운 리포트를 작성하세요.${
     input.manseryeokText
       ? " 천간지지/십성/대운/세운/신살 등 풀 명식 정보를 적극 근거로 활용하되, 단정적 표현은 피하고 가능성/경향으로 풀어 주세요."
       : " 4기둥 명식의 오행·기운을 근거로 자연스럽게 설명에 녹여 주세요."
