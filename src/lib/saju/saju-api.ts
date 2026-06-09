@@ -74,8 +74,8 @@ export async function fetchSajuAnalysis(
   if (!env.SAJU_API_URL || !env.SAJU_API_KEY) {
     throw new SajuApiError("SAJU_API_URL / SAJU_API_KEY 환경변수가 설정되지 않았습니다.");
   }
-  const url = env.SAJU_API_URL;
-  const apiKey = env.SAJU_API_KEY;
+  const url = env.SAJU_API_URL.trim();
+  const apiKey = env.SAJU_API_KEY.trim();
 
   const body = JSON.stringify({ ...birthInfo, fields });
   let lastError: unknown;
