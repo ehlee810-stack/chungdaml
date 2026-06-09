@@ -119,7 +119,19 @@ function SiteFooter() {
             <Lb>사업자등록번호</Lb> {businessInfo.businessNumber}
           </p>
           <p>
-            <Lb>고객센터</Lb> 카카오톡 {siteConfig.name} 채널
+            <Lb>고객센터</Lb>{" "}
+            {businessInfo.kakaoChannelUrl ? (
+              <a
+                href={businessInfo.kakaoChannelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-hairline underline-offset-2 hover:text-yeonji"
+              >
+                카카오톡 {siteConfig.name} 채널
+              </a>
+            ) : (
+              <>카카오톡 {siteConfig.name} 채널</>
+            )}
             <Sep />
             <Lb>MAIL</Lb> {businessInfo.email}
           </p>

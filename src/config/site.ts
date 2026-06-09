@@ -20,8 +20,10 @@ export const businessInfo = {
   mailOrderNumber: "2025-제주대정-063",
   address: "제주특별자치도 서귀포시 대정읍 에듀시티로 148",
   phone: "010-0000-0000", // TODO: 실제 고객문의 번호로 교체
-  phoneNote: "문자만 가능 · 평일 11-15시", // 비우면 푸터에서 부가표시 없이 노출
+  phoneNote: "전화 상담은 운영하지 않으며, 채팅으로 문의해 주세요.", // 비우면 푸터에서 부가표시 없이 노출
   email: "contact@example.com", // TODO: 실제 고객문의 이메일로 교체
+  // 카카오톡 채널/오픈채팅 주소 — 입력하면 푸터 "고객센터"가 링크로 연결됩니다. 비우면 일반 텍스트.
+  kakaoChannelUrl: "", // 예: "https://pf.kakao.com/_xxxxx" 또는 오픈채팅 링크
   privacyOfficer: "이은희",
   // 호스팅 / 주요 처리 위탁 업체 — 개인정보처리방침에 노출
   hostingProvider: "Vercel Inc.",
