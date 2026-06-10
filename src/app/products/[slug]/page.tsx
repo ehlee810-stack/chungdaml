@@ -6,6 +6,7 @@ import { PriceTag } from "@/components/PriceTag";
 import { formatDate } from "@/lib/utils";
 import { isSupabaseConfigured } from "@/lib/env";
 import { productsSeed } from "@/config/products.seed";
+import { productMeta } from "@/config/product-meta";
 
 type Product = {
   id: string;
@@ -56,19 +57,60 @@ export default async function ProductDetailPage({
 
   if (!product) notFound();
 
+  const meta = productMeta(product.slug);
+
   return (
     <div className="container py-12 max-w-2xl">
       <header className="mb-10">
-        <p className="text-xs font-mono text-mute mb-2">PRODUCT / {product.slug}</p>
-        <h1 className="text-3xl font-semibold tracking-tight">{product.name}</h1>
-        <p className="mt-2 text-sm text-body">{product.description}</p>
+        {meta?.badge && (
+          <span className="mb-3 inline-flex items-center rounded-full bg-yeonji/10 px-3 py-1 text-xs font-bold tracking-wide text-yeonji">
+            {meta.badge}
+          </span>
+        )}
+        <h1 className="font-serif text-[28px] font-bold leading-tight tracking-tight text-ink md:text-[34px]">
+          {product.name}
+        </h1>
+        <p className="mt-3 text-[15px] leading-relaxed text-body">{product.description}</p>
         <PriceTag
           price={product.price}
           compareAt={product.compare_at_price}
           size="lg"
-          className="mt-5"
+          className="mt-6 border-t border-hairline pt-6"
         />
       </header>
+
+      {/* 상품 안내 — 추천 대상 / 결과 구성 */}
+      {meta && (
+        <section className="mb-12 grid gap-5 rounded-lg border border-hairline bg-surface-soft p-6 sm:grid-cols-2 sm:p-7">
+          <div>
+            <h2 className="mb-3 text-sm font-semibold text-ink">이런 분께 추천해요</h2>
+            <ul className="space-y-2 text-[14px] leading-relaxed text-body">
+              {meta.recommend.map((r) => (
+                <li key={r} className="flex gap-2">
+                  <span className="mt-[2px] text-yeonji">·</span>
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-sm font-semibold text-ink">결과 리포트 구성</h2>
+            <ul className="flex flex-wrap gap-x-2 gap-y-2">
+              {meta.includes.map((c) => (
+                <li
+                  key={c}
+                  className="rounded-full border border-hairline bg-canvas px-3 py-1 text-[13px] text-charcoal"
+                >
+                  {c}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-xs leading-relaxed text-mute">
+              분량 {meta.length} · 결제 후 1~2분 내 바로 생성, 마이페이지에서 언제든 다시 볼 수 있어요.
+            </p>
+          </div>
+        </section>
+      )}
 
       <section>
         <h2 className="text-sm font-semibold mb-4 text-ink">사주 정보 입력</h2>
