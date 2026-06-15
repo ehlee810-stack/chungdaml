@@ -10,3 +10,7 @@ next-env.d.ts
 .vercel
 supabase/.branches
 supabase/.temp
+
+# 이 프로젝트는 pnpm 사용 — npm/yarn 락파일 금지
+package-lock.json
+yarn.lock
