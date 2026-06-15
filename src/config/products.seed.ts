@@ -26,6 +26,16 @@ export const productsSeed: ProductSeed[] = [
     is_active: true,
   },
   {
+    slug: "half-year-fortune",
+    name: "2026 하반기 운세",
+    description:
+      "2026년, 아직 절반이 남았습니다 — 하반기 재물·일·연애·건강의 흐름과 7~12월 월별 운세까지, 남은 반년을 알차게 준비하세요.",
+    price: 12900,
+    compare_at_price: 27900,
+    display_order: 7,
+    is_active: true,
+  },
+  {
     slug: "solo-saju",
     name: "정통 평생사주",
     description:

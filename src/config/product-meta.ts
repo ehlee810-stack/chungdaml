@@ -8,7 +8,7 @@ export type ProductMeta = {
   recommend: string[];
   includes: string[];
   length: string;
-  badge?: "인기" | "신규" | "추천" | "신년 BEST";
+  badge?: "인기" | "신규" | "추천" | "신년 BEST" | "하반기 BEST";
 };
 
 export const PRODUCT_META: Record<string, ProductMeta> = {
@@ -28,6 +28,24 @@ export const PRODUCT_META: Record<string, ProductMeta> = {
       "건강·컨디션운",
       "월별 운세 흐름",
       "올해의 행운 포인트",
+    ],
+  },
+  "half-year-fortune": {
+    badge: "하반기 BEST",
+    length: "약 2,500~3,500자",
+    recommend: [
+      "2026년 남은 반년을 미리 준비하고 싶은 분",
+      "하반기 재물·일·연애 흐름이 궁금한 분",
+      "연말까지 중요한 결정을 앞둔 분",
+    ],
+    includes: [
+      "하반기 전체 기운과 흐름",
+      "재물·금전운",
+      "직업·사업운",
+      "애정·인연운",
+      "건강·컨디션운",
+      "월별 운세(7~12월)",
+      "하반기 기회·주의 시기",
     ],
   },
   "solo-saju": {

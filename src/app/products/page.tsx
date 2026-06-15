@@ -21,7 +21,7 @@ const CATEGORIES: { title: string; desc: string; icon: string; slugs: string[] }
     title: "신년·올해의 운세",
     desc: "2026 병오년 한 해의 흐름을 미리 받아보세요",
     icon: "🎍",
-    slugs: ["sinnyeon-fortune", "weekly-fortune"],
+    slugs: ["sinnyeon-fortune", "half-year-fortune", "weekly-fortune"],
   },
   {
     title: "종합 사주",
