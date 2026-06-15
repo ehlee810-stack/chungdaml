@@ -16,7 +16,7 @@ export function CTA() {
               "linear-gradient(90deg,#b3284e,#d98a3d,#e0c35a,#5f7a52,#3f5c8a,#8a4a86)",
           }}
         />
-        <h2 className="font-serif text-2xl md:text-3xl font-semibold tracking-tight">
+        <h2 className="font-serif text-2xl font-bold tracking-tight md:text-[34px]">
           오늘, 내 운명의 흐름을 들여다보세요
         </h2>
         <p className="mt-3 text-sm text-white/70">

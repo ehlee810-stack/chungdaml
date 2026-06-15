@@ -3,6 +3,7 @@ import { PriceTag } from "@/components/PriceTag";
 import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/env";
 import { productsSeed } from "@/config/products.seed";
+import { productMeta } from "@/config/product-meta";
 
 // Ollama: thin-border cards on the same canvas — no shadow, hairline only.
 export async function ProductLineup() {
@@ -52,12 +53,19 @@ export async function ProductLineup() {
         </p>
       </div>
       <div className="grid gap-6 md:grid-cols-2">
-        {products.slice(0, 6).map((p) => (
+        {products.slice(0, 6).map((p) => {
+          const badge = productMeta(p.slug)?.badge;
+          return (
           <Link
             key={p.slug}
             href={`/products/${p.slug}`}
-            className="group flex flex-col rounded-lg border border-hairline bg-canvas p-6 transition-all duration-200 hover:-translate-y-1 hover:border-yeonji/50 hover:shadow-[0_16px_36px_-14px_rgba(122,40,55,0.28)] md:p-8"
+            className="group relative flex flex-col rounded-lg border border-hairline bg-canvas p-6 transition-all duration-200 hover:-translate-y-1 hover:border-yeonji/50 hover:shadow-[0_16px_36px_-14px_rgba(122,40,55,0.28)] md:p-8"
           >
+            {badge && (
+              <span className="absolute right-5 top-5 rounded-full bg-yeonji px-2.5 py-0.5 text-[11px] font-bold tracking-wide text-[#fdf6ea]">
+                {badge}
+              </span>
+            )}
             <p className="text-xl font-semibold text-ink">{p.name}</p>
             <p className="mt-2.5 line-clamp-3 flex-1 text-[15px] leading-relaxed text-body">
               {p.description}
@@ -72,7 +80,8 @@ export async function ProductLineup() {
               자세히 보기 →
             </span>
           </Link>
-        ))}
+          );
+        })}
       </div>
 
       {products.length > 6 && (

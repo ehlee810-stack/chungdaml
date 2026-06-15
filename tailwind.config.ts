@@ -61,14 +61,18 @@ const config: Config = {
         sm: "calc(var(--radius) - 6px)",
       },
       fontFamily: {
+        // 본문·UI — Pretendard 산세리프
         sans: [
-          "var(--font-serif)",
+          "Pretendard Variable",
+          "Pretendard",
+          "-apple-system",
+          "BlinkMacSystemFont",
           "Apple SD Gothic Neo",
-          "Noto Serif KR",
-          "ui-serif",
-          "Georgia",
-          "serif",
+          "system-ui",
+          "Roboto",
+          "sans-serif",
         ],
+        // 제목·브랜드 — Noto Serif KR 명조 (font-serif 클래스로 사용)
         serif: [
           "var(--font-serif)",
           "Noto Serif KR",

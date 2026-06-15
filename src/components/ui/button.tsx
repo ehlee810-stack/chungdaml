@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-ink text-canvas hover:bg-[#090909]",
+        default: "bg-yeonji text-[#fdf6ea] hover:bg-[#9e2245]",
         outline:
           "border border-hairline-strong bg-canvas text-ink hover:bg-surface-soft",
         ghost: "text-ink hover:bg-surface-soft",
