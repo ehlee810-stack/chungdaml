@@ -24,11 +24,23 @@ export const metadata: Metadata = {
     "궁합", "자미두수", "자미두수 궁합", "재회운", "신년운세", "자녀 사주",
   ],
   metadataBase: new URL(siteConfig.url),
+  alternates: { canonical: "/" },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
     type: "website",
     locale: "ko_KR",
+  },
+  // 검색엔진 소유확인 — Vercel 환경변수에 코드만 넣으면 자동 적용 (코드 수정 불필요)
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : {}),
+    other: {
+      ...(process.env.NAVER_SITE_VERIFICATION
+        ? { "naver-site-verification": process.env.NAVER_SITE_VERIFICATION }
+        : {}),
+    },
   },
 };
 

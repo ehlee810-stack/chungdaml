@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentUser } from "@/lib/auth";
@@ -5,8 +6,30 @@ import { SajuForm } from "@/components/saju/SajuForm";
 import { PriceTag } from "@/components/PriceTag";
 import { formatDate } from "@/lib/utils";
 import { isSupabaseConfigured } from "@/lib/env";
+import { siteConfig } from "@/config/site";
 import { productsSeed } from "@/config/products.seed";
 import { productMeta } from "@/config/product-meta";
+
+// 상품별 SEO 메타데이터 — 검색 노출/공유 카드용
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const p = productsSeed.find((x) => x.slug === slug && x.is_active);
+  if (!p) return { title: "상품을 찾을 수 없습니다" };
+  return {
+    title: p.name,
+    description: p.description,
+    alternates: { canonical: `/products/${slug}` },
+    openGraph: {
+      title: `${p.name} | ${siteConfig.name}`,
+      description: p.description,
+      type: "website",
+    },
+  };
+}
 
 type Product = {
   id: string;
