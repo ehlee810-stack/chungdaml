@@ -19,7 +19,7 @@ export const businessInfo = {
   businessNumber: "198-61-00763",
   mailOrderNumber: "2025-제주대정-063",
   address: "제주특별자치도 서귀포시 대정읍 에듀시티로 148",
-  phone: "010-0000-0000", // TODO: 실제 고객문의 번호로 교체
+  phone: "070-8027-4488",
   phoneNote: "전화 상담은 운영하지 않으며, 채팅으로 문의해 주세요.", // 비우면 푸터에서 부가표시 없이 노출
   email: "nuvohan@gmail.com",
   // 카카오톡 채널/오픈채팅 주소 — 입력하면 푸터 "고객센터"가 링크로 연결됩니다. 비우면 일반 텍스트.
