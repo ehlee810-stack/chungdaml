@@ -63,6 +63,12 @@ function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
           {siteConfig.name}
         </Link>
         <nav className="flex items-center gap-4 text-[13px] font-medium sm:gap-6">
+          <Link
+            href="/free"
+            className="whitespace-nowrap rounded-full border border-yeonji/40 bg-yeonji/10 px-3 py-1 text-yeonji hover:bg-yeonji/15 transition-colors"
+          >
+            무료 체험
+          </Link>
           <Link href="/products" className="whitespace-nowrap text-ink hover:text-body">상담</Link>
           {isLoggedIn ? (
             <>

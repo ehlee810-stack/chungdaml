@@ -206,14 +206,14 @@ export function Hero() {
         </div>
 
         <div className="mx-auto mt-9 flex w-full max-w-xs flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center md:mt-10">
-          <Link href="/products" className={cn(buttonVariants({ size: "lg" }), "px-8")}>
-            내 사주 보러 가기
+          <Link href="/free" className={cn(buttonVariants({ size: "lg" }), "px-8")}>
+            무료로 먼저 체험하기
           </Link>
           <Link
-            href="#how-it-works"
+            href="/products"
             className={cn(buttonVariants({ size: "lg", variant: "outline" }), "px-8")}
           >
-            이용 방법 보기
+            상품 바로 보기
           </Link>
         </div>
 

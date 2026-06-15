@@ -98,6 +98,18 @@ type SajuApiCallRow = {
   source: string | null;
 };
 
+type FreeLeadRow = {
+  id: string;
+  email: string;
+  name: string | null;
+  birth_date: string;
+  birth_time: string | null;
+  time_unknown: boolean;
+  gender: GenderKind;
+  calendar: CalendarKind;
+  created_at: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -203,6 +215,22 @@ export type Database = {
           source?: string | null;
         };
         Update: Partial<SajuApiCallRow>;
+        Relationships: [];
+      };
+      free_leads: {
+        Row: FreeLeadRow;
+        Insert: {
+          id?: string;
+          email: string;
+          name?: string | null;
+          birth_date: string;
+          birth_time?: string | null;
+          time_unknown?: boolean;
+          gender: GenderKind;
+          calendar: CalendarKind;
+          created_at?: string;
+        };
+        Update: Partial<FreeLeadRow>;
         Relationships: [];
       };
     };
