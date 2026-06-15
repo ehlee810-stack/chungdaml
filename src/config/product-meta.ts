@@ -8,10 +8,28 @@ export type ProductMeta = {
   recommend: string[];
   includes: string[];
   length: string;
-  badge?: "인기" | "신규" | "추천";
+  badge?: "인기" | "신규" | "추천" | "신년 BEST";
 };
 
 export const PRODUCT_META: Record<string, ProductMeta> = {
+  "sinnyeon-fortune": {
+    badge: "신년 BEST",
+    length: "약 3,000~4,000자",
+    recommend: [
+      "2026년 한 해를 미리 준비하고 싶은 분",
+      "올해 재물·일·연애 흐름이 궁금한 분",
+      "중요한 결정·도전을 앞둔 분",
+    ],
+    includes: [
+      "올해의 전체 기운과 큰 흐름",
+      "재물·금전운",
+      "직업·사업운",
+      "애정·인연운",
+      "건강·컨디션운",
+      "월별 운세 흐름",
+      "올해의 행운 포인트",
+    ],
+  },
   "solo-saju": {
     badge: "인기",
     length: "약 3,500~5,000자",
@@ -133,6 +151,40 @@ export const PRODUCT_META: Record<string, ProductMeta> = {
       "재접촉이 오는 시기",
       "재연결 이후의 흐름",
       "반복 패턴과 끊는 법",
+    ],
+  },
+  "wealth-fortune": {
+    badge: "신규",
+    length: "약 2,500~3,500자",
+    recommend: [
+      "돈의 흐름과 기회 시기가 궁금한 분",
+      "투자·재테크 타이밍을 고민하는 분",
+      "타고난 재물 그릇을 알고 싶은 분",
+    ],
+    includes: [
+      "타고난 재물운의 특징",
+      "돈을 버는 나만의 방식",
+      "재물이 모이는·빠지는 시기",
+      "투자·재테크 성향과 주의점",
+      "올해의 금전운 흐름",
+      "재물을 키우는 실천 조언",
+    ],
+  },
+  "career-fortune": {
+    badge: "신규",
+    length: "약 2,500~3,500자",
+    recommend: [
+      "취업·이직을 앞둔 분",
+      "시험·합격을 준비하는 분",
+      "내 직업 적성이 궁금한 분",
+    ],
+    includes: [
+      "타고난 직업 적성·강점",
+      "잘 맞는 직무·분야",
+      "합격·취업운의 흐름",
+      "면접·시험에서 유리한 전략",
+      "올해의 직업·합격운",
+      "커리어 실천 조언",
     ],
   },
   "pet-saju": {

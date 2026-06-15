@@ -18,10 +18,28 @@ type P = {
 // 카테고리 정의 (slug 기준 분류) — icon: 카드/섹션 상징
 const CATEGORIES: { title: string; desc: string; icon: string; slugs: string[] }[] = [
   {
+    title: "신년·올해의 운세",
+    desc: "2026 병오년 한 해의 흐름을 미리 받아보세요",
+    icon: "🎍",
+    slugs: ["sinnyeon-fortune", "weekly-fortune"],
+  },
+  {
     title: "종합 사주",
     desc: "사주 4기둥으로 보는 인생 전체의 흐름",
     icon: "🪷",
     slugs: ["solo-saju", "couple-saju"],
+  },
+  {
+    title: "연애·궁합·재회",
+    desc: "연애·궁합·재회까지, 마음의 흐름을 짚어드려요",
+    icon: "💗",
+    slugs: ["love-fortune", "reunion", "jamidusu-gunghap", "jamidusu-jaehoe"],
+  },
+  {
+    title: "재물·직업운",
+    desc: "돈과 일 — 가장 현실적인 고민을 사주로",
+    icon: "💰",
+    slugs: ["wealth-fortune", "career-fortune"],
   },
   {
     title: "자녀 사주",
@@ -30,16 +48,10 @@ const CATEGORIES: { title: string; desc: string; icon: string; slugs: string[] }
     slugs: ["child-saju", "children-saju"],
   },
   {
-    title: "인연·재회운",
-    desc: "연애·궁합·재회까지, 마음의 흐름을 짚어드려요",
-    icon: "💗",
-    slugs: ["love-fortune", "reunion", "jamidusu-gunghap", "jamidusu-jaehoe"],
-  },
-  {
     title: "특별 사주",
-    desc: "반려동물 사주부터 가볍게 보는 주간 운세까지",
+    desc: "반려동물의 타고난 기질과 주인과의 궁합",
     icon: "✨",
-    slugs: ["pet-saju", "weekly-fortune"],
+    slugs: ["pet-saju"],
   },
 ];
 
