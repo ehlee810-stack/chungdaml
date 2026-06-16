@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 // Ollama-style inverted CTA strip — the single attention-grabbing surface.
 export function CTA() {
   return (
-    <section className="container py-16">
-      <div className="relative overflow-hidden rounded-lg bg-surface-dark px-8 py-14 text-center text-canvas">
+    <section className="container py-12 sm:py-16">
+      <div className="relative overflow-hidden rounded-lg bg-surface-dark px-6 py-12 text-center text-canvas sm:px-8 sm:py-14">
         {/* 조각보 포인트 띠 */}
         <div
           aria-hidden

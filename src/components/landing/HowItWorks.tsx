@@ -8,14 +8,14 @@ export function HowItWorks() {
   ];
   return (
     <section id="how-it-works" className="border-t border-hairline bg-surface-soft">
-      <div className="container py-20 md:py-24">
+      <div className="container py-14 sm:py-20 md:py-24">
         <div className="mb-14 text-center">
           <p className="mb-3 font-mono text-xs tracking-[0.3em] text-yeonji">HOW IT WORKS</p>
           <h2 className="font-serif text-2xl font-bold tracking-tight text-ink md:text-[34px]">
             이용 방법
           </h2>
         </div>
-        <ol className="grid gap-12 md:grid-cols-4">
+        <ol className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-12">
           {steps.map((s) => (
             <li key={s.n}>
               <p className="mb-3 font-mono text-2xl font-bold text-yeonji">{s.n}</p>

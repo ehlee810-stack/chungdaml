@@ -20,7 +20,7 @@ const features = [
 export function Intro() {
   return (
     <section className="border-t border-hairline">
-      <div className="container py-20 md:py-24">
+      <div className="container py-14 sm:py-20 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-3 font-mono text-xs tracking-[0.3em] text-yeonji">WHY 청담엘사주</p>
           <h2 className="font-serif text-2xl font-bold tracking-tight text-ink md:text-[34px]">
@@ -36,7 +36,7 @@ export function Intro() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded-lg border border-hairline bg-canvas p-8 text-center"
+              className="rounded-lg border border-hairline bg-canvas p-6 text-center sm:p-8"
             >
               <div
                 className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full font-serif text-2xl font-semibold text-[#fdf6ea]"

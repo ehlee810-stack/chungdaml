@@ -103,13 +103,13 @@ export default async function AdminOrdersPage({ searchParams }: { searchParams: 
 
       <p className="text-xs text-mute font-mono mb-3">{orders.length} ROWS</p>
 
-      <div className="border border-hairline rounded-lg overflow-hidden">
+      <div className="overflow-x-auto rounded-lg border border-hairline">
         {orders.length === 0 ? (
           <div className="py-16 text-center text-sm text-mute">
             {demoMode ? "데모 모드에서는 결제 내역이 비어 있습니다." : "조건에 맞는 결제 내역이 없습니다."}
           </div>
         ) : (
-        <table className="w-full text-sm">
+        <table className="w-full min-w-[720px] text-sm">
           <thead>
             <tr className="border-b border-hairline">
               <th className="px-4 py-3 text-left text-[11px] font-mono uppercase tracking-wider text-mute">생성일</th>

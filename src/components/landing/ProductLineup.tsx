@@ -42,7 +42,7 @@ export async function ProductLineup() {
   }
 
   return (
-    <section className="container py-20 border-t border-hairline md:py-24">
+    <section className="container border-t border-hairline py-14 sm:py-20 md:py-24">
       <div className="mx-auto mb-12 max-w-2xl text-center">
         <p className="mb-3 font-mono text-xs tracking-[0.3em] text-yeonji">SAJU MENU</p>
         <h2 className="font-serif text-2xl font-bold tracking-tight text-ink md:text-[34px]">

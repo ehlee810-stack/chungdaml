@@ -6,7 +6,8 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      // 모바일은 좌우 여백을 좁혀 콘텐츠 폭 확보, sm 이상에서 넉넉하게
+      padding: { DEFAULT: "1rem", sm: "1.5rem" },
       screens: { "2xl": "1100px" },
     },
     extend: {

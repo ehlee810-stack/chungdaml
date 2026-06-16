@@ -67,17 +67,17 @@ function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
       <div className="container flex h-14 items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-2 font-serif text-[18px] font-bold tracking-tight text-ink"
+          className="flex shrink-0 items-center gap-1.5 font-serif text-[17px] font-bold tracking-tight text-ink sm:gap-2 sm:text-[18px]"
         >
           <span className="flex h-6 w-6 items-center justify-center rounded-[4px] bg-yeonji text-[11px] font-semibold text-[#fdf6ea]">
             印
           </span>
           {siteConfig.name}
         </Link>
-        <nav className="flex items-center gap-4 text-[13px] font-medium sm:gap-6">
+        <nav className="flex items-center gap-2.5 text-[13px] font-medium sm:gap-6">
           <Link
             href="/free"
-            className="whitespace-nowrap rounded-full border border-yeonji/40 bg-yeonji/10 px-3 py-1 text-yeonji hover:bg-yeonji/15 transition-colors"
+            className="whitespace-nowrap rounded-full border border-yeonji/40 bg-yeonji/10 px-2.5 py-1 text-yeonji transition-colors hover:bg-yeonji/15 sm:px-3"
           >
             무료 체험
           </Link>

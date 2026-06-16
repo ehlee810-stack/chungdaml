@@ -169,7 +169,7 @@ export function Hero() {
         />
       </svg>
 
-      <div className="container relative py-20 text-center md:py-40">
+      <div className="container relative py-16 text-center sm:py-20 md:py-40">
         {/* 낙관(落款) — 붉은 도장 + 브랜드 한자 */}
         <div className="mx-auto mb-6 flex w-fit items-center gap-2.5 md:mb-7 md:gap-3">
           <span className="flex h-9 w-9 items-center justify-center rounded-[6px] bg-yeonji text-[15px] font-semibold text-[#fdf6ea] shadow-sm md:h-10 md:w-10 md:text-[17px]">
