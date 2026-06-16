@@ -62,7 +62,7 @@ export const productsSeed: ProductSeed[] = [
     description:
       "내 인연은 언제, 어떤 모습으로 올까 — 타고난 매력과 잘 맞는 사람, 인연이 들어오는 시기와 올해 연애 흐름을 짚어드립니다.",
     price: 4900,
-    compare_at_price: 10000,
+    compare_at_price: 20000,
     display_order: 30,
     is_active: true,
   },
@@ -72,7 +72,7 @@ export const productsSeed: ProductSeed[] = [
     description:
       "그 사람과 다시 만날 수 있을까 — 재회 가능성과 다시 연결되는 시기, 그 후의 흐름과 마음 정리까지 사주로 풀어드립니다.",
     price: 4900,
-    compare_at_price: 10000,
+    compare_at_price: 20000,
     display_order: 35,
     is_active: true,
   },
@@ -92,7 +92,7 @@ export const productsSeed: ProductSeed[] = [
     description:
       "부부궁·자녀궁·명궁·천이궁과 화록·화기·록존·유년 흐름을 살펴 재회 가능성과 재접촉 시기(4~6월·9월 전후), 재연결 이후 안정 또는 재충돌·반복 이별 패턴까지 풀어드립니다.",
     price: 4900,
-    compare_at_price: 10000,
+    compare_at_price: 20000,
     display_order: 45,
     is_active: true,
   },
@@ -102,7 +102,7 @@ export const productsSeed: ProductSeed[] = [
     description:
       "내 돈은 언제 들어오고 어떻게 불어날까 — 타고난 재물 그릇과 돈이 모이는 시기, 투자 성향과 올해 금전운까지 짚어드립니다.",
     price: 4900,
-    compare_at_price: 10000,
+    compare_at_price: 20000,
     display_order: 50,
     is_active: true,
   },
@@ -112,7 +112,7 @@ export const productsSeed: ProductSeed[] = [
     description:
       "이번엔 될까 — 타고난 직업 적성과 잘 맞는 분야, 합격·취업의 기회가 열리는 시기와 면접·시험 전략을 사주로 짚어드립니다.",
     price: 4900,
-    compare_at_price: 10000,
+    compare_at_price: 20000,
     display_order: 55,
     is_active: true,
   },
@@ -148,8 +148,8 @@ export const productsSeed: ProductSeed[] = [
     slug: "weekly-fortune",
     name: "이번주 운세 (구독)",
     description: "매주 내 사주 흐름에 맞춘 한 주 운세를 받아보는 주간 구독 — 가볍게 시작하는 나의 운세 습관.",
-    price: 4900,
-    compare_at_price: 10000,
+    price: 3900,
+    compare_at_price: 20000,
     display_order: 85,
     is_active: true,
   },
