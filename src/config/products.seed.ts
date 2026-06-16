@@ -30,8 +30,8 @@ export const productsSeed: ProductSeed[] = [
     name: "2026 하반기 운세",
     description:
       "2026년, 아직 절반이 남았습니다 — 하반기 재물·일·연애·건강의 흐름과 7~12월 월별 운세까지, 남은 반년을 알차게 준비하세요.",
-    price: 9900,
-    compare_at_price: 20000,
+    price: 13900,
+    compare_at_price: 30000,
     display_order: 7,
     is_active: true,
   },
@@ -60,8 +60,8 @@ export const productsSeed: ProductSeed[] = [
     name: "연애운",
     description:
       "내 인연은 언제, 어떤 모습으로 올까 — 타고난 매력과 잘 맞는 사람, 인연이 들어오는 시기와 올해 연애 흐름을 짚어드립니다.",
-    price: 11900,
-    compare_at_price: 30000,
+    price: 9900,
+    compare_at_price: 20000,
     display_order: 30,
     is_active: true,
   },
@@ -70,8 +70,8 @@ export const productsSeed: ProductSeed[] = [
     name: "재회운",
     description:
       "그 사람과 다시 만날 수 있을까 — 재회 가능성과 다시 연결되는 시기, 그 후의 흐름과 마음 정리까지 사주로 풀어드립니다.",
-    price: 9900,
-    compare_at_price: 20000,
+    price: 12900,
+    compare_at_price: 30000,
     display_order: 35,
     is_active: true,
   },
@@ -100,7 +100,7 @@ export const productsSeed: ProductSeed[] = [
     name: "금전·재물운",
     description:
       "내 돈은 언제 들어오고 어떻게 불어날까 — 타고난 재물 그릇과 돈이 모이는 시기, 투자 성향과 올해 금전운까지 짚어드립니다.",
-    price: 13900,
+    price: 11900,
     compare_at_price: 30000,
     display_order: 50,
     is_active: true,
