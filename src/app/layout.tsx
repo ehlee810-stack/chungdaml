@@ -6,6 +6,7 @@ import { siteConfig, businessInfo } from "@/config/site";
 import { isSupabaseConfigured } from "@/lib/env";
 import { getCurrentUser } from "@/lib/auth";
 import { EventBanner } from "@/components/EventBanner";
+import { EventPopup } from "@/components/EventPopup";
 import "./globals.css";
 
 // 한옥 컨셉 — 정갈한 명조체
@@ -52,6 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <SiteHeader isLoggedIn={isLoggedIn} />
         <main className="min-h-[calc(100vh-7rem)]">{children}</main>
         <SiteFooter />
+        <EventPopup />
         <Toaster position="top-center" />
       </body>
     </html>
