@@ -150,7 +150,8 @@ function SiteFooter() {
             ) : (
               <>카카오톡 {siteConfig.name} 채널</>
             )}
-            <Sep />
+          </p>
+          <p>
             <Lb>MAIL</Lb> {businessInfo.email}
           </p>
           {businessInfo.phone && (
