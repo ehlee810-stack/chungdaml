@@ -32,11 +32,8 @@ export const metadata: Metadata = {
     locale: "ko_KR",
   },
   // 검색엔진 소유확인 — 공개 인증 코드라 코드에 직접 명시.
-  // 구글 코드는 받으면 GOOGLE_SITE_VERIFICATION 환경변수로 주입(없으면 미표시).
   verification: {
-    ...(process.env.GOOGLE_SITE_VERIFICATION
-      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
-      : {}),
+    google: "PagpUO2qjreNkGFFXfJrli7Dq36aSfG-UBnbumb6am0",
     other: {
       "naver-site-verification": "25b93be5bcc750fce99717bd5e4c34999b107b3b",
     },
