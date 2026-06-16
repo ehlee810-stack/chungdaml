@@ -2,38 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { createServiceClient } from "@/lib/supabase/server";
 import { confirmTossPayment } from "@/lib/toss/confirm";
-import { computeMyeongsik, type Myeongsik } from "@/lib/saju/manseryeok";
-import { buildSajuPrompt } from "@/lib/saju/prompt";
-import { generateInterpretation } from "@/lib/saju/llm";
-import {
-  isSajuApiConfigured,
-  fetchSajuAnalysis,
-  formatSajuToManseryeok,
-  ganjiToMyeongsik,
-  type BirthInfo,
-} from "@/lib/saju/saju-api";
-import { twoPersonLabels } from "@/config/two-person";
-import type { PartnerInput } from "@/types/database";
-
-// 두 번째 사람(partner) jsonb → BirthInfo
-function partnerToBirthInfo(p: PartnerInput): BirthInfo {
-  const [y, m, d] = p.birthDate.split("-");
-  const hasTime = !p.timeUnknown && !!p.birthTime;
-  const [hh, mm] = hasTime ? p.birthTime!.split(":") : [undefined, undefined];
-  return {
-    birthYear: y,
-    birthMonth: String(parseInt(m, 10)),
-    birthDay: String(parseInt(d, 10)),
-    ...(hasTime ? { birthHour: String(parseInt(hh!, 10)), birthMinute: String(parseInt(mm!, 10)) } : {}),
-    calendarType: p.calendar === "lunar" ? "음력" : "양력",
-    gender: p.gender,
-  };
-}
-
-function partnerBasicText(p: PartnerInput): string {
-  const time = p.timeUnknown ? " (시 미상)" : p.birthTime ? ` ${p.birthTime}` : "";
-  return `생년월일: ${p.birthDate}${time} / 성별: ${p.gender === "male" ? "남성" : "여성"} / 달력: ${p.calendar === "lunar" ? "음력" : "양력"}`;
-}
+import { generateAndStoreResult } from "@/lib/saju/generate-result";
 
 // 프리미엄 리포트는 LLM 생성이 길어 시간이 걸리므로 함수 실행시간을 넉넉히.
 export const maxDuration = 60;
@@ -43,40 +12,6 @@ const bodySchema = z.object({
   orderId: z.string().min(1),
   amount: z.number().int().nonnegative(),
 });
-
-// saju_inputs row → BirthInfo (luckyloveme 입력 형식)
-type SajuInputRow = {
-  birth_date: string;            // "YYYY-MM-DD"
-  birth_time: string | null;     // "HH:mm"
-  time_unknown: boolean;
-  calendar: "solar" | "lunar";
-  gender: "male" | "female";
-  concerns: string[];
-};
-
-function toBirthInfo(input: SajuInputRow): BirthInfo {
-  const [y, m, d] = input.birth_date.split("-");
-  const hasTime = !input.time_unknown && !!input.birth_time;
-  const [hh, mm] = hasTime ? input.birth_time!.split(":") : [undefined, undefined];
-  return {
-    birthYear: y,
-    birthMonth: String(parseInt(m, 10)),
-    birthDay: String(parseInt(d, 10)),
-    ...(hasTime ? { birthHour: String(parseInt(hh!, 10)), birthMinute: String(parseInt(mm!, 10)) } : {}),
-    calendarType: input.calendar === "lunar" ? "음력" : "양력",
-    gender: input.gender,
-  };
-}
-
-function toComputeInput(input: SajuInputRow) {
-  return {
-    birthDate: input.birth_date,
-    birthTime: input.birth_time,
-    timeUnknown: input.time_unknown,
-    calendar: input.calendar,
-    gender: input.gender,
-  };
-}
 
 export async function POST(request: NextRequest) {
   const parsed = bodySchema.safeParse(await request.json());
@@ -130,100 +65,24 @@ export async function POST(request: NextRequest) {
     })
     .eq("id", order.id);
 
-  // 3. 사주 생성
-  const { data: input } = await service
-    .from("saju_inputs")
-    .select("*")
-    .eq("order_id", order.id)
-    .single();
+  // 3. 상품 조회 + 사주 결과 생성
   const { data: product } = await service
     .from("products")
     .select("slug, name")
     .eq("id", order.product_id)
     .single();
 
-  if (!input || !product) {
-    return NextResponse.json({ error: "사주 입력 또는 상품 조회 실패" }, { status: 500 });
+  if (!product) {
+    return NextResponse.json({ error: "상품 조회 실패" }, { status: 500 });
   }
 
   try {
-    // 만세력/풀 분석: luckyloveme 키가 있으면 실제 API, 없거나 실패하면 mock 으로 fallback
-    let myeongsik: Myeongsik;
-    let manseryeokText: string | undefined;
-
-    if (isSajuApiConfigured()) {
-      try {
-        const birthInfo = toBirthInfo(input);
-        const analysis = await fetchSajuAnalysis(birthInfo, [], { source: "confirm" }); // [] = 16종 전체
-        const converted = ganjiToMyeongsik(analysis);
-        if (converted) {
-          myeongsik = converted;
-          manseryeokText = formatSajuToManseryeok(analysis, birthInfo);
-        } else {
-          // ganji 필드 누락 — mock 으로 폴백
-          myeongsik = await computeMyeongsik(toComputeInput(input));
-        }
-      } catch (apiErr) {
-        // luckyloveme 호출 실패 — 결제는 이미 승인됐으므로 mock 으로 폴백해서 결과지는 무조건 생성
-        console.error("[saju-api] fallback to mock:", apiErr);
-        myeongsik = await computeMyeongsik(toComputeInput(input));
-      }
-    } else {
-      myeongsik = await computeMyeongsik(toComputeInput(input));
-    }
-
-    // 2인 상품: 두 번째 사람 명식
-    const labels = twoPersonLabels(product.slug);
-    const partner = input.partner as PartnerInput | null;
-    let partnerSajuText: string | undefined;
-    if (labels && partner) {
-      if (isSajuApiConfigured()) {
-        try {
-          const pBirth = partnerToBirthInfo(partner);
-          const pAnalysis = await fetchSajuAnalysis(pBirth, [], { source: "confirm" });
-          partnerSajuText = formatSajuToManseryeok(pAnalysis, pBirth);
-        } catch {
-          partnerSajuText = partnerBasicText(partner);
-        }
-      } else {
-        partnerSajuText = partnerBasicText(partner);
-      }
-    }
-
-    const { system, user } = buildSajuPrompt({
+    const { resultId } = await generateAndStoreResult(service, {
+      orderDbId: order.id,
       productSlug: product.slug,
       productName: product.name,
-      myeongsik,
-      manseryeokText,
-      selfLabel: labels?.label1,
-      partnerLabel: labels?.label2,
-      partnerSajuText,
-      birthDate: input.birth_date,
-      birthTime: input.birth_time,
-      timeUnknown: input.time_unknown,
-      gender: input.gender,
-      concerns: input.concerns,
     });
-
-    const llm = await generateInterpretation({ system, user });
-
-    const { data: result, error: resultErr } = await service
-      .from("saju_results")
-      .insert({
-        order_id: order.id,
-        myeongsik: myeongsik as never,
-        interpretation_md: llm.text,
-        llm_provider: llm.provider,
-        llm_model: llm.model,
-      })
-      .select("id")
-      .single();
-
-    if (resultErr || !result) {
-      return NextResponse.json({ error: "결과 저장 실패", detail: resultErr?.message }, { status: 500 });
-    }
-
-    return NextResponse.json({ resultId: result.id });
+    return NextResponse.json({ resultId });
   } catch (err) {
     return NextResponse.json(
       {

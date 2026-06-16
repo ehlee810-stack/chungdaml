@@ -110,6 +110,15 @@ type FreeLeadRow = {
   created_at: string;
 };
 
+type CouponRow = {
+  code: string;
+  product_slug: string;
+  max_uses: number;
+  used_count: number;
+  is_active: boolean;
+  created_at: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -233,12 +242,28 @@ export type Database = {
         Update: Partial<FreeLeadRow>;
         Relationships: [];
       };
+      coupons: {
+        Row: CouponRow;
+        Insert: {
+          code: string;
+          product_slug: string;
+          max_uses: number;
+          used_count?: number;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Update: Partial<CouponRow>;
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      claim_coupon: {
+        Args: { p_code: string; p_slug: string };
+        Returns: number;
+      };
     };
     Enums: {
       order_status: OrderStatus;
