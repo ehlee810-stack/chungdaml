@@ -6,7 +6,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/database";
 import { computeMyeongsik, type Myeongsik } from "./manseryeok";
-import { buildSajuPrompt } from "./prompt";
+import { buildSajuPromptGroups } from "./prompt";
 import { generateInterpretation } from "./llm";
 import {
   isSajuApiConfigured,
@@ -135,7 +135,7 @@ export async function generateAndStoreResult(
     }
   }
 
-  const { system, user } = buildSajuPrompt({
+  const promptGroups = buildSajuPromptGroups({
     productSlug,
     productName,
     myeongsik,
@@ -150,14 +150,20 @@ export async function generateAndStoreResult(
     concerns: input.concerns,
   });
 
-  const llm = await generateInterpretation({ system, user });
+  // 섹션 그룹을 병렬로 호출해 전체 결과지 조합
+  const groupResults = await Promise.all(
+    promptGroups.map((g) => generateInterpretation({ system: g.system, user: g.user }))
+  );
+
+  const combinedText = groupResults.map((r) => r.text).join("\n\n");
+  const llm = groupResults[0];
 
   const { data: result, error: resultErr } = await service
     .from("saju_results")
     .insert({
       order_id: orderDbId,
       myeongsik: myeongsik as never,
-      interpretation_md: llm.text,
+      interpretation_md: combinedText,
       llm_provider: llm.provider,
       llm_model: llm.model,
     })
