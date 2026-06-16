@@ -44,6 +44,10 @@
     font-family:
       "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
       "Apple SD Gothic Neo", system-ui, Roboto, "Helvetica Neue", sans-serif;
+    /* 한국어 단어가 줄 끝에서 글자 단위로 쪼개지지 않도록 — 띄어쓰기(단어) 단위로 줄바꿈.
+       이메일·URL 등 띄어쓰기 없는 긴 문자열만 예외적으로 끊어 오버플로우 방지. */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
   code, pre, kbd, samp {
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco,
