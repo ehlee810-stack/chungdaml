@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/free",
     "/products",
+    "/reviews",
     "/legal/terms",
     "/legal/privacy",
     "/legal/refund-policy",

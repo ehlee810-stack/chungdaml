@@ -80,6 +80,7 @@ function SiteHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
             무료 체험
           </Link>
           <Link href="/products" className="whitespace-nowrap text-ink hover:text-body">상담</Link>
+          <Link href="/reviews" className="hidden whitespace-nowrap text-ink hover:text-body sm:inline">후기</Link>
           {isLoggedIn ? (
             <>
               <Link href="/mypage" className="text-ink hover:text-body">마이페이지</Link>
