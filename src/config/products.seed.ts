@@ -31,8 +31,8 @@ export const productsSeed: ProductSeed[] = [
     name: "2026 하반기 운세",
     description:
       "2026년, 아직 절반이 남았습니다 — 하반기 재물·일·연애·건강의 흐름과 7~12월 월별 운세까지, 남은 반년을 알차게 준비하세요.",
-    price: 9900,
-    compare_at_price: 20000,
+    price: 12900,
+    compare_at_price: 38000,
     display_order: 7,
     is_active: true,
   },
@@ -41,8 +41,8 @@ export const productsSeed: ProductSeed[] = [
     name: "정통 평생사주",
     description:
       "내가 타고난 그릇과 인생 전체의 흐름 — 성향·강점·재물·직업·애정·대운까지 한 번에 짚는 정통 사주 리포트.",
-    price: 9900,
-    compare_at_price: 20000,
+    price: 12900,
+    compare_at_price: 38000,
     display_order: 10,
     is_active: true,
   },
