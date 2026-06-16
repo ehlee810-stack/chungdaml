@@ -123,7 +123,7 @@ function SiteFooter() {
         </div>
 
         {/* 사업자 정보 */}
-        <div className="space-y-2 text-[13px] leading-relaxed text-mute">
+        <div className="space-y-0.5 text-[13px] leading-relaxed text-mute">
           <p>
             <Lb>상호</Lb> {businessInfo.companyName}
             <Sep />
@@ -154,7 +154,7 @@ function SiteFooter() {
             <Lb>MAIL</Lb> {businessInfo.email}
           </p>
           {businessInfo.phone && (
-            <p className="pt-1">
+            <p>
               <Lb>대표번호</Lb> {businessInfo.phone}
               {businessInfo.phoneNote && (
                 <span className="mt-0.5 block text-xs text-mute">({businessInfo.phoneNote})</span>
