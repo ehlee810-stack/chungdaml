@@ -31,15 +31,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
   },
-  // 검색엔진 소유확인 — Vercel 환경변수에 코드만 넣으면 자동 적용 (코드 수정 불필요)
+  // 검색엔진 소유확인 — 공개 인증 코드라 코드에 직접 명시.
+  // 구글 코드는 받으면 GOOGLE_SITE_VERIFICATION 환경변수로 주입(없으면 미표시).
   verification: {
     ...(process.env.GOOGLE_SITE_VERIFICATION
       ? { google: process.env.GOOGLE_SITE_VERIFICATION }
       : {}),
     other: {
-      ...(process.env.NAVER_SITE_VERIFICATION
-        ? { "naver-site-verification": process.env.NAVER_SITE_VERIFICATION }
-        : {}),
+      "naver-site-verification": "25b93be5bcc750fce99717bd5e4c34999b107b3b",
     },
   },
 };
