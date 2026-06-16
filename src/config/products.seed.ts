@@ -139,7 +139,7 @@ export const productsSeed: ProductSeed[] = [
     name: "반려동물 사주",
     description:
       "우리 아이(반려동물)의 타고난 기질과 성향, 주인과의 궁합, 건강에서 살필 점, 더 잘 지내는 법까지 사주로 다정하게 풀어드립니다.",
-    price: 4900,
+    price: 9900,
     compare_at_price: 20000,
     display_order: 80,
     is_active: true,
