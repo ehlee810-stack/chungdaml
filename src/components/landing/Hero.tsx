@@ -230,7 +230,7 @@ export function Hero() {
           </div>
 
           {/* 캐릭터 엘 — 모바일: 첫 번째, 데스크탑: 오른쪽 */}
-          <div className="flex-shrink-0 w-64 sm:w-72 md:w-[400px] order-1 md:order-2">
+          <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2">
             <Image
               src="/el-character.png"
               alt="청담엘사주 — 엘"
