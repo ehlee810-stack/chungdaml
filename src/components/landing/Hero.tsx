@@ -215,8 +215,8 @@ export function Hero() {
               </Link>
               <Link
                 href="/products"
-                className={cn(buttonVariants({ size: "lg", variant: "outline" }), "border-white/30 px-8")}
-                style={{ color: "#fdf6ea" }}
+                className={cn(buttonVariants({ size: "lg", variant: "outline" }), "px-8")}
+                style={{ backgroundColor: "transparent", borderColor: "rgba(201,168,76,0.6)", color: "#fdf6ea" }}
               >
                 상품 바로 보기
               </Link>
