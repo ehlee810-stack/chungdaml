@@ -186,7 +186,8 @@ export function Hero() {
               </span>
             </div>
 
-            <h1 className="font-serif text-[28px] font-bold leading-[1.35] tracking-tight sm:text-[34px] md:text-[46px] md:leading-[1.25]" style={{ color: "#fdf6ea" }}>
+            {/* 데스크탑에서만 표시 */}
+            <h1 className="hidden md:block font-serif text-[46px] font-bold leading-[1.25] tracking-tight" style={{ color: "#fdf6ea" }}>
               <span className="block">천간지지에 새겨진 운명,</span>
               <span className="block">당신의 때를</span>
               <span className="block">명확하게 풀어드립니다</span>
@@ -230,7 +231,7 @@ export function Hero() {
           </div>
 
           {/* 캐릭터 엘 — 모바일: 첫 번째, 데스크탑: 오른쪽 */}
-          <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2">
+          <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2 relative">
             <Image
               src="/el-character.png"
               alt="청담엘사주 — 엘"
@@ -239,6 +240,15 @@ export function Hero() {
               className="w-full"
               priority
             />
+            {/* 모바일 전용 — 이미지 하단 그라데이션 + 헤드라인 오버레이 */}
+            <div className="md:hidden absolute bottom-0 left-0 right-0 px-5 pb-6 pt-20"
+              style={{ background: "linear-gradient(to top, #0e0a1a 30%, transparent)" }}>
+              <h1 className="font-serif text-[26px] font-bold leading-[1.35] tracking-tight text-center" style={{ color: "#fdf6ea" }}>
+                <span className="block">천간지지에 새겨진 운명,</span>
+                <span className="block">당신의 때를</span>
+                <span className="block">명확하게 풀어드립니다</span>
+              </h1>
+            </div>
             <p className="mt-2 text-center text-[13px] font-serif tracking-widest" style={{ color: "rgba(201,168,76,0.6)" }}>
               — 엘 (L) —
             </p>
