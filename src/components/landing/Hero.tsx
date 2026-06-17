@@ -101,25 +101,25 @@ function Constellation({ c }: { c: Cons }) {
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-hairline">
-      {/* 따뜻한 한지 그라데이션 (대칭) */}
+      {/* 어두운 별밤 배경 */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-20"
         style={{
           background:
-            "radial-gradient(90% 70% at 50% 30%, rgba(201,168,76,0.10) 0%, transparent 60%)," +
-            "radial-gradient(60% 50% at 50% 0%, rgba(179,40,78,0.07) 0%, transparent 60%)," +
-            "linear-gradient(180deg, #f9f3e8 0%, #efe4d0 100%)",
+            "radial-gradient(80% 60% at 70% 50%, rgba(179,40,78,0.18) 0%, transparent 60%)," +
+            "radial-gradient(60% 50% at 30% 40%, rgba(201,168,76,0.10) 0%, transparent 55%)," +
+            "linear-gradient(135deg, #0e0a1a 0%, #1a0f2e 50%, #0a0814 100%)",
         }}
       />
 
-      {/* 흩뿌린 별 */}
+      {/* 흩뿌린 별 — 어두운 배경에서 밝게 */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         {scatter.map(([left, top, r], i) => (
           <span
             key={i}
-            className="absolute rounded-full bg-hanok-wood"
-            style={{ left: `${left}%`, top: `${top}%`, width: `${r * 2}px`, height: `${r * 2}px`, opacity: 0.2 }}
+            className="absolute rounded-full"
+            style={{ left: `${left}%`, top: `${top}%`, width: `${r * 2}px`, height: `${r * 2}px`, backgroundColor: "#c9a84c", opacity: 0.5 }}
           />
         ))}
       </div>
@@ -133,7 +133,8 @@ export function Hero() {
       <svg
         aria-hidden
         viewBox="0 0 600 600"
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 text-hanok-wood opacity-[0.09] sm:h-[480px] sm:w-[480px] md:h-[680px] md:w-[680px] md:opacity-[0.10]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 opacity-[0.12] sm:h-[480px] sm:w-[480px] md:h-[680px] md:w-[680px] md:opacity-[0.14]"
+        style={{ color: "#c9a84c" }}
       >
         {[280, 232, 156, 108].map((r) => (
           <circle key={r} cx="300" cy="300" r={r} fill="none" stroke="currentColor" strokeWidth="1.2" />
@@ -180,18 +181,18 @@ export function Hero() {
               <span className="flex h-9 w-9 items-center justify-center rounded-[6px] bg-yeonji text-[15px] font-semibold text-[#fdf6ea] shadow-sm md:h-10 md:w-10 md:text-[17px]">
                 印
               </span>
-              <span className="font-serif text-[17px] font-semibold tracking-[0.16em] text-hanok-wood md:text-[22px] md:tracking-[0.18em]">
+              <span className="font-serif text-[17px] font-semibold tracking-[0.16em] md:text-[22px] md:tracking-[0.18em]" style={{ color: "#c9a84c" }}>
                 정통 사주명리
               </span>
             </div>
 
-            <h1 className="font-serif text-[28px] font-bold leading-[1.35] tracking-tight text-ink sm:text-[34px] md:text-[46px] md:leading-[1.25]">
+            <h1 className="font-serif text-[28px] font-bold leading-[1.35] tracking-tight sm:text-[34px] md:text-[46px] md:leading-[1.25]" style={{ color: "#fdf6ea" }}>
               <span className="block">천간지지에 새겨진 운명,</span>
               <span className="block">당신의 때를</span>
               <span className="block">명확하게 풀어드립니다</span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-charcoal mx-auto md:mx-0 md:mt-6 md:text-[17px]">
+            <p className="mt-5 max-w-xl text-[15px] leading-relaxed mx-auto md:mx-0 md:mt-6 md:text-[17px]" style={{ color: "rgba(253,246,234,0.75)" }}>
               정통 만세력과 깊이 있는 해석이 만나는 사주 상담.
               <br className="hidden sm:block" />
               {" "}오늘의 운세부터 연애·궁합, 직업운, 재물운까지
@@ -216,33 +217,31 @@ export function Hero() {
               </Link>
               <Link
                 href="/products"
-                className={cn(buttonVariants({ size: "lg", variant: "outline" }), "px-8")}
+                className={cn(buttonVariants({ size: "lg", variant: "outline" }), "border-white/30 px-8")}
+                style={{ color: "#fdf6ea" }}
               >
                 상품 바로 보기
               </Link>
             </div>
 
-            <p className="mt-6 max-w-sm text-[12px] leading-relaxed text-mute mx-auto md:mx-0 md:max-w-none md:text-[13px]">
+            <p className="mt-6 max-w-sm text-[12px] leading-relaxed mx-auto md:mx-0 md:max-w-none md:text-[13px]" style={{ color: "rgba(253,246,234,0.45)" }}>
               <span className="block md:inline">회원 전용 · 카카오 간편 로그인</span>
               <span className="hidden md:inline"> · </span>
               <span className="block md:inline">정통 만세력 기반 · 1900~2100년 분석</span>
             </p>
           </div>
 
-          {/* 캐릭터 엘 */}
-          <div className="flex-shrink-0 w-64 sm:w-72 md:w-[380px]">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-hanok-wood/10 to-transparent blur-2xl" />
-              <Image
-                src="/el-character.png"
-                alt="청담엘사주 — 엘"
-                width={400}
-                height={400}
-                className="relative w-full rounded-3xl shadow-2xl"
-                priority
-              />
-            </div>
-            <p className="mt-3 text-center text-[13px] text-hanok-wood font-serif tracking-widest opacity-70">
+          {/* 캐릭터 엘 — 테두리 없이 자연스럽게 */}
+          <div className="flex-shrink-0 w-64 sm:w-72 md:w-[400px]">
+            <Image
+              src="/el-character.png"
+              alt="청담엘사주 — 엘"
+              width={400}
+              height={400}
+              className="w-full"
+              priority
+            />
+            <p className="mt-2 text-center text-[13px] font-serif tracking-widest" style={{ color: "rgba(201,168,76,0.6)" }}>
               — 엘 (L) —
             </p>
           </div>
