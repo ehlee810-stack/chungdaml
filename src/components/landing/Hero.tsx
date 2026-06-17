@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -169,59 +170,84 @@ export function Hero() {
         />
       </svg>
 
-      <div className="container relative py-16 text-center sm:py-20 md:py-40">
-        {/* 낙관(落款) — 붉은 도장 + 브랜드 한자 */}
-        <div className="mx-auto mb-6 flex w-fit items-center gap-2.5 md:mb-7 md:gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-[6px] bg-yeonji text-[15px] font-semibold text-[#fdf6ea] shadow-sm md:h-10 md:w-10 md:text-[17px]">
-            印
-          </span>
-          <span className="font-serif text-[17px] font-semibold tracking-[0.16em] text-hanok-wood md:text-[22px] md:tracking-[0.18em]">
-            정통 사주명리
-          </span>
+      <div className="container relative py-16 sm:py-20 md:py-28">
+        <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
+
+          {/* 텍스트 영역 */}
+          <div className="flex-1 text-center md:text-left">
+            {/* 낙관(落款) — 붉은 도장 + 브랜드 한자 */}
+            <div className="mb-6 flex w-fit items-center gap-2.5 mx-auto md:mx-0 md:mb-7 md:gap-3">
+              <span className="flex h-9 w-9 items-center justify-center rounded-[6px] bg-yeonji text-[15px] font-semibold text-[#fdf6ea] shadow-sm md:h-10 md:w-10 md:text-[17px]">
+                印
+              </span>
+              <span className="font-serif text-[17px] font-semibold tracking-[0.16em] text-hanok-wood md:text-[22px] md:tracking-[0.18em]">
+                정통 사주명리
+              </span>
+            </div>
+
+            <h1 className="font-serif text-[28px] font-bold leading-[1.35] tracking-tight text-ink sm:text-[34px] md:text-[46px] md:leading-[1.25]">
+              <span className="block">천간지지에 새겨진 운명,</span>
+              <span className="block">당신의 때를</span>
+              <span className="block">명확하게 풀어드립니다</span>
+            </h1>
+
+            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-charcoal mx-auto md:mx-0 md:mt-6 md:text-[17px]">
+              정통 만세력과 깊이 있는 해석이 만나는 사주 상담.
+              <br className="hidden sm:block" />
+              {" "}오늘의 운세부터 연애·궁합, 직업운, 재물운까지
+              <br className="hidden sm:block" />
+              {" "}한 분 한 분 정성껏 풀어드립니다.
+            </p>
+
+            {/* 조각보 — 굵은 포인트 띠 */}
+            <div className="mt-8 flex w-fit gap-1.5 mx-auto md:mx-0 md:mt-9 md:gap-2">
+              {jogakboColors.map((c) => (
+                <span
+                  key={c}
+                  className="h-7 w-7 rounded-[5px] shadow-sm md:h-10 md:w-10"
+                  style={{ backgroundColor: c }}
+                />
+              ))}
+            </div>
+
+            <div className="mt-9 flex w-full max-w-xs flex-col items-stretch justify-center gap-3 mx-auto sm:max-w-none sm:flex-row sm:items-center md:mx-0 md:mt-10 md:justify-start">
+              <Link href="/free" className={cn(buttonVariants({ size: "lg" }), "px-8")}>
+                무료로 먼저 체험하기
+              </Link>
+              <Link
+                href="/products"
+                className={cn(buttonVariants({ size: "lg", variant: "outline" }), "px-8")}
+              >
+                상품 바로 보기
+              </Link>
+            </div>
+
+            <p className="mt-6 max-w-sm text-[12px] leading-relaxed text-mute mx-auto md:mx-0 md:max-w-none md:text-[13px]">
+              <span className="block md:inline">회원 전용 · 카카오 간편 로그인</span>
+              <span className="hidden md:inline"> · </span>
+              <span className="block md:inline">정통 만세력 기반 · 1900~2100년 분석</span>
+            </p>
+          </div>
+
+          {/* 캐릭터 엘 */}
+          <div className="flex-shrink-0 w-64 sm:w-72 md:w-[380px]">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-hanok-wood/10 to-transparent blur-2xl" />
+              <Image
+                src="/el-character.png"
+                alt="청담엘사주 — 엘"
+                width={400}
+                height={400}
+                className="relative w-full rounded-3xl shadow-2xl"
+                priority
+              />
+            </div>
+            <p className="mt-3 text-center text-[13px] text-hanok-wood font-serif tracking-widest opacity-70">
+              — 엘 (L) —
+            </p>
+          </div>
+
         </div>
-
-        <h1 className="mx-auto max-w-3xl font-serif text-[28px] font-bold leading-[1.35] tracking-tight text-ink sm:text-[34px] md:text-[50px] md:leading-[1.25]">
-          <span className="block">천간지지에 새겨진 운명,</span>
-          <span className="block">당신의 때를</span>
-          <span className="block">명확하게 풀어드립니다</span>
-        </h1>
-
-        <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-charcoal md:mt-6 md:text-[17px]">
-          정통 만세력과 깊이 있는 해석이 만나는 사주 상담.
-          <br className="hidden sm:block" />
-          {" "}오늘의 운세부터 연애·궁합, 직업운, 재물운까지
-          <br className="hidden sm:block" />
-          {" "}한 분 한 분 정성껏 풀어드립니다.
-        </p>
-
-        {/* 조각보 — 굵은 포인트 띠 */}
-        <div className="mx-auto mt-8 flex w-fit gap-1.5 md:mt-9 md:gap-2">
-          {jogakboColors.map((c) => (
-            <span
-              key={c}
-              className="h-7 w-7 rounded-[5px] shadow-sm md:h-10 md:w-10"
-              style={{ backgroundColor: c }}
-            />
-          ))}
-        </div>
-
-        <div className="mx-auto mt-9 flex w-full max-w-xs flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center md:mt-10">
-          <Link href="/free" className={cn(buttonVariants({ size: "lg" }), "px-8")}>
-            무료로 먼저 체험하기
-          </Link>
-          <Link
-            href="/products"
-            className={cn(buttonVariants({ size: "lg", variant: "outline" }), "px-8")}
-          >
-            상품 바로 보기
-          </Link>
-        </div>
-
-        <p className="mx-auto mt-6 max-w-sm text-[12px] leading-relaxed text-mute md:max-w-none md:text-[13px]">
-          <span className="block md:inline">회원 전용 · 카카오 간편 로그인</span>
-          <span className="hidden md:inline"> · </span>
-          <span className="block md:inline">정통 만세력 기반 · 1900~2100년 분석</span>
-        </p>
       </div>
     </section>
   );
