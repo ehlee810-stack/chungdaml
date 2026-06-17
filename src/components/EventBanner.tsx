@@ -31,8 +31,6 @@ export async function EventBanner() {
       🎉 오픈 기념 <strong className="font-bold">선착순 30명 무료</strong>
       <span className="mx-1.5 opacity-60">·</span>
       결제창에 <strong className="font-bold tracking-wide">OPEN30</strong> 입력
-      <span className="mx-1.5 opacity-60">·</span>
-      남은 <strong className="font-bold">{remaining}명</strong>
     </Link>
   );
 }
