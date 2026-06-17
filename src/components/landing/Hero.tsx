@@ -174,8 +174,8 @@ export function Hero() {
       <div className="container relative py-16 sm:py-20 md:py-28">
         <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
 
-          {/* 텍스트 영역 */}
-          <div className="flex-1 text-center md:text-left">
+          {/* 텍스트 영역 — 모바일: 두 번째, 데스크탑: 왼쪽 */}
+          <div className="flex-1 text-center md:text-left order-2 md:order-1">
             {/* 낙관(落款) — 붉은 도장 + 브랜드 한자 */}
             <div className="mb-6 flex w-fit items-center gap-2.5 mx-auto md:mx-0 md:mb-7 md:gap-3">
               <span className="flex h-9 w-9 items-center justify-center rounded-[6px] bg-yeonji text-[15px] font-semibold text-[#fdf6ea] shadow-sm md:h-10 md:w-10 md:text-[17px]">
@@ -229,8 +229,8 @@ export function Hero() {
             </p>
           </div>
 
-          {/* 캐릭터 엘 — 테두리 없이 자연스럽게 */}
-          <div className="flex-shrink-0 w-64 sm:w-72 md:w-[400px]">
+          {/* 캐릭터 엘 — 모바일: 첫 번째, 데스크탑: 오른쪽 */}
+          <div className="flex-shrink-0 w-64 sm:w-72 md:w-[400px] order-1 md:order-2">
             <Image
               src="/el-character.png"
               alt="청담엘사주 — 엘"
