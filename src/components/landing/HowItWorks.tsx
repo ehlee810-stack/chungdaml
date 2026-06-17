@@ -20,19 +20,19 @@ export function HowItWorks() {
 
         <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-16">
           {/* 캐릭터 엘 */}
-          <div className="flex-shrink-0 w-56 sm:w-64 md:w-[320px]">
+          <div className="flex-shrink-0 w-full md:w-[320px]">
             <div className="relative">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-hanok-wood/10 to-transparent blur-2xl" />
+              <div className="absolute inset-0 md:rounded-3xl bg-gradient-to-b from-hanok-wood/10 to-transparent blur-2xl" />
               <Image
                 src="/el-character-2.png"
-                alt="엘이 사주를 읽어드립니다"
+                alt="엘이 사주를 풀어드립니다"
                 width={380}
                 height={380}
-                className="relative w-full rounded-3xl shadow-xl"
+                className="relative w-full md:rounded-3xl shadow-xl"
               />
             </div>
             <p className="mt-3 text-center text-[13px] text-hanok-wood font-serif tracking-widest opacity-70">
-              엘이 직접 읽어드립니다
+              엘이 직접 풀어드립니다
             </p>
           </div>
 
