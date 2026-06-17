@@ -200,15 +200,13 @@ export function Hero() {
               {" "}한 분 한 분 정성껏 풀어드립니다.
             </p>
 
-            {/* 조각보 — 굵은 포인트 띠 */}
-            <div className="mt-8 flex w-fit gap-1.5 mx-auto md:mx-0 md:mt-9 md:gap-2">
-              {jogakboColors.map((c) => (
-                <span
-                  key={c}
-                  className="h-7 w-7 rounded-[5px] shadow-sm md:h-10 md:w-10"
-                  style={{ backgroundColor: c }}
-                />
-              ))}
+            {/* 골드 별 구분선 */}
+            <div className="mt-8 flex w-fit items-center gap-3 mx-auto md:mx-0 md:mt-9" style={{ color: "rgba(201,168,76,0.6)" }}>
+              <span className="text-lg">✦</span>
+              <span className="h-px w-16 bg-current opacity-50" />
+              <span className="text-sm">청담엘사주</span>
+              <span className="h-px w-16 bg-current opacity-50" />
+              <span className="text-lg">✦</span>
             </div>
 
             <div className="mt-9 flex w-full max-w-xs flex-col items-stretch justify-center gap-3 mx-auto sm:max-w-none sm:flex-row sm:items-center md:mx-0 md:mt-10 md:justify-start">
