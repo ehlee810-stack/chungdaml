@@ -15,25 +15,25 @@ export function PriceTag({
 }) {
   const hasDiscount = compareAt != null && compareAt > price;
   const percent = hasDiscount ? Math.round((1 - price / compareAt!) * 100) : 0;
-  const priceClass = size === "lg" ? "text-[26px]" : "text-xl";
+  const priceClass = size === "lg" ? "text-[26px]" : size === "md" ? "text-xl" : "text-[17px]";
 
   return (
     <div className={className}>
       {hasDiscount && (
-        <div className="mb-1 flex items-center gap-2">
-          <span className="font-mono text-sm text-mute line-through">
+        <div className="mb-1 flex flex-wrap items-center gap-1.5">
+          <span className="font-mono text-xs text-mute line-through md:text-sm">
             {formatKRW(compareAt)}
           </span>
-          <span className="rounded-full bg-yeonji/10 px-2 py-0.5 text-xs font-bold text-yeonji">
+          <span className="rounded-full bg-yeonji/10 px-1.5 py-0.5 text-[10px] font-bold text-yeonji md:px-2 md:text-xs">
             {percent}% 할인
           </span>
         </div>
       )}
-      <div className="flex items-baseline gap-1.5">
+      <div className="flex items-baseline gap-1">
         <span className={`font-mono font-semibold text-ink ${priceClass}`}>
           {formatKRW(price)}
         </span>
-        {hasDiscount && <span className="text-xs text-body">단골가</span>}
+        {hasDiscount && <span className="text-[10px] text-body md:text-xs">단골가</span>}
       </div>
     </div>
   );

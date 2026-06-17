@@ -66,17 +66,17 @@ export async function ProductLineup() {
                 {badge}
               </span>
             )}
-            <p className="text-[15px] font-semibold text-ink md:text-xl">{p.name}</p>
-            <p className="mt-2 line-clamp-3 flex-1 text-[13px] leading-relaxed text-body md:mt-2.5 md:text-[15px]">
+            <p className="pr-10 text-[13px] font-semibold text-ink md:pr-0 md:text-xl">{p.name}</p>
+            <p className="mt-1.5 line-clamp-3 flex-1 text-[11px] leading-relaxed text-body md:mt-2.5 md:text-[15px]">
               {p.description}
             </p>
             <PriceTag
               price={p.price}
               compareAt={p.compare_at_price}
-              size="lg"
-              className="mt-4 border-t border-hairline pt-4 md:mt-6 md:pt-5"
+              size="md"
+              className="mt-3 border-t border-hairline pt-3 md:mt-6 md:pt-5"
             />
-            <span className="mt-3 text-xs font-medium text-mute transition-colors group-hover:text-yeonji md:mt-5 md:text-sm">
+            <span className="mt-2 text-[11px] font-medium text-mute transition-colors group-hover:text-yeonji md:mt-5 md:text-sm">
               자세히 보기 →
             </span>
           </Link>
