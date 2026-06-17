@@ -256,6 +256,12 @@ export function Hero() {
 
         </div>
       </div>
+      {/* Hero → Intro 자연스러운 배경 전환 */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-16 z-10"
+        style={{ background: "linear-gradient(to bottom, transparent, #f7f1e6)" }}
+      />
     </section>
   );
 }

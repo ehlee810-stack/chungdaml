@@ -13,7 +13,7 @@ export function CTA() {
           className="absolute inset-x-0 top-0 h-1"
           style={{
             background:
-              "linear-gradient(90deg,#b3284e,#d98a3d,#e0c35a,#5f7a52,#3f5c8a,#8a4a86)",
+              "linear-gradient(90deg, rgba(201,168,76,0) 0%, rgba(201,168,76,0.8) 30%, rgba(201,168,76,1) 50%, rgba(201,168,76,0.8) 70%, rgba(201,168,76,0) 100%)",
           }}
         />
         <h2 className="font-serif text-2xl font-bold tracking-tight md:text-[34px]">

@@ -111,7 +111,7 @@ function SiteFooter() {
   );
 
   return (
-    <footer className="mt-24 border-t border-hairline bg-surface-soft">
+    <footer className="border-t border-hairline bg-surface-soft">
       <div className="container py-14 text-center">
         {/* 브랜드 */}
         <div className="mb-7 flex items-center justify-center gap-2">

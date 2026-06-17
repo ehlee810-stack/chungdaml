@@ -55,6 +55,8 @@ export async function ProductLineup() {
       <div className="grid grid-cols-2 gap-3 md:gap-6">
         {products.slice(0, 6).map((p) => {
           const badge = productMeta(p.slug)?.badge;
+          const badgeColor =
+            badge === "BEST" ? "#6b4a2f" : badge === "신규" ? "#5f7a52" : "#b3284e";
           return (
           <Link
             key={p.slug}
@@ -62,7 +64,10 @@ export async function ProductLineup() {
             className="group relative flex flex-col rounded-lg border border-hairline bg-canvas p-4 transition-all duration-200 hover:-translate-y-1 hover:border-yeonji/50 hover:shadow-[0_16px_36px_-14px_rgba(122,40,55,0.28)] md:p-8"
           >
             {badge && (
-              <span className="absolute right-3 top-3 rounded-full bg-yeonji px-2 py-0.5 text-[10px] font-bold tracking-wide text-[#fdf6ea] md:right-5 md:top-5 md:px-2.5 md:text-[11px]">
+              <span
+                className="absolute right-3 top-3 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide text-[#fdf6ea] md:right-5 md:top-5 md:px-2.5 md:text-[11px]"
+                style={{ backgroundColor: badgeColor }}
+              >
                 {badge}
               </span>
             )}
