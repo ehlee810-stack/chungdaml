@@ -52,31 +52,31 @@ export async function ProductLineup() {
           종합 사주부터 연애·재회, 자녀, 반려동물 사주까지 — 원하는 만큼 깊이 있게 들여다보세요.
         </p>
       </div>
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-2 gap-3 md:gap-6">
         {products.slice(0, 6).map((p) => {
           const badge = productMeta(p.slug)?.badge;
           return (
           <Link
             key={p.slug}
             href={`/products/${p.slug}`}
-            className="group relative flex flex-col rounded-lg border border-hairline bg-canvas p-6 transition-all duration-200 hover:-translate-y-1 hover:border-yeonji/50 hover:shadow-[0_16px_36px_-14px_rgba(122,40,55,0.28)] md:p-8"
+            className="group relative flex flex-col rounded-lg border border-hairline bg-canvas p-4 transition-all duration-200 hover:-translate-y-1 hover:border-yeonji/50 hover:shadow-[0_16px_36px_-14px_rgba(122,40,55,0.28)] md:p-8"
           >
             {badge && (
-              <span className="absolute right-5 top-5 rounded-full bg-yeonji px-2.5 py-0.5 text-[11px] font-bold tracking-wide text-[#fdf6ea]">
+              <span className="absolute right-3 top-3 rounded-full bg-yeonji px-2 py-0.5 text-[10px] font-bold tracking-wide text-[#fdf6ea] md:right-5 md:top-5 md:px-2.5 md:text-[11px]">
                 {badge}
               </span>
             )}
-            <p className="text-xl font-semibold text-ink">{p.name}</p>
-            <p className="mt-2.5 line-clamp-3 flex-1 text-[15px] leading-relaxed text-body">
+            <p className="text-[15px] font-semibold text-ink md:text-xl">{p.name}</p>
+            <p className="mt-2 line-clamp-3 flex-1 text-[13px] leading-relaxed text-body md:mt-2.5 md:text-[15px]">
               {p.description}
             </p>
             <PriceTag
               price={p.price}
               compareAt={p.compare_at_price}
               size="lg"
-              className="mt-6 border-t border-hairline pt-5"
+              className="mt-4 border-t border-hairline pt-4 md:mt-6 md:pt-5"
             />
-            <span className="mt-5 text-sm font-medium text-mute transition-colors group-hover:text-yeonji">
+            <span className="mt-3 text-xs font-medium text-mute transition-colors group-hover:text-yeonji md:mt-5 md:text-sm">
               자세히 보기 →
             </span>
           </Link>
