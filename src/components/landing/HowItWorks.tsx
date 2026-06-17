@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 // 한옥 컨셉 — 한지 보조 면 위에 연지빛 번호 마커. (가장 눈에 띄는 안내 섹션)
 export function HowItWorks() {
   const steps = [
@@ -15,15 +17,36 @@ export function HowItWorks() {
             이용 방법
           </h2>
         </div>
-        <ol className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-12">
-          {steps.map((s) => (
-            <li key={s.n}>
-              <p className="mb-3 font-mono text-2xl font-bold text-yeonji">{s.n}</p>
-              <p className="mb-2 text-xl font-bold text-ink">{s.t}</p>
-              <p className="text-[15px] leading-relaxed text-body">{s.d}</p>
-            </li>
-          ))}
-        </ol>
+
+        <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-16">
+          {/* 캐릭터 엘 */}
+          <div className="flex-shrink-0 w-56 sm:w-64 md:w-[320px]">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-hanok-wood/10 to-transparent blur-2xl" />
+              <Image
+                src="/el-character-2.png"
+                alt="엘이 사주를 읽어드립니다"
+                width={380}
+                height={380}
+                className="relative w-full rounded-3xl shadow-xl"
+              />
+            </div>
+            <p className="mt-3 text-center text-[13px] text-hanok-wood font-serif tracking-widest opacity-70">
+              엘이 직접 읽어드립니다
+            </p>
+          </div>
+
+          {/* 이용 단계 */}
+          <ol className="flex-1 grid grid-cols-2 gap-x-6 gap-y-10 md:gap-12">
+            {steps.map((s) => (
+              <li key={s.n}>
+                <p className="mb-3 font-mono text-2xl font-bold text-yeonji">{s.n}</p>
+                <p className="mb-2 text-xl font-bold text-ink">{s.t}</p>
+                <p className="text-[15px] leading-relaxed text-body">{s.d}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );
