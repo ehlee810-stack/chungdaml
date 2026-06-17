@@ -8,12 +8,12 @@ export type ProductMeta = {
   recommend: string[];
   includes: string[];
   length: string;
-  badge?: "인기" | "신규" | "추천" | "신년 BEST" | "하반기 BEST";
+  badge?: "인기" | "신규" | "추천" | "BEST";
 };
 
 export const PRODUCT_META: Record<string, ProductMeta> = {
   "sinnyeon-fortune": {
-    badge: "신년 BEST",
+    badge: "BEST",
     length: "약 3,000~4,000자",
     recommend: [
       "2026년 한 해를 미리 준비하고 싶은 분",
@@ -31,7 +31,7 @@ export const PRODUCT_META: Record<string, ProductMeta> = {
     ],
   },
   "half-year-fortune": {
-    badge: "하반기 BEST",
+    badge: "BEST",
     length: "약 2,500~3,500자",
     recommend: [
       "2026년 남은 반년을 미리 준비하고 싶은 분",
